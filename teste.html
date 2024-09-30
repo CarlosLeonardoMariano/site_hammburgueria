@@ -1,0 +1,923 @@
+ <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"/>  <!--LINK DO TOASTIFY DO CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/output.css">
+</head>
+<body>
+   
+<!--HEADER-->
+<header class="w-full h-[420px] bg-zinc-900 bg-cover bg-center bg-home">
+    <div class="w-full h-full flex flex-col justify-center items-center">
+        <img src="imagens_cardapio/hamb-1.png" alt="logo" class="w-32 h-32 rounded-full shadow-lg hover:scale-110 duration-200">
+    <h1 class="text-4xl mt-5 mb-2 font-bold text-white">PIRACAIA BURGUER</h1>
+    <span class="text-white font-medium"> Rua Valentin Del Nero - Piracaia-SP</span>
+
+    <div class="bg-green-600 px-4 py-2 rounded-lg mt-5 " id="date-span">
+        <span class="text-white font-semibold"> Ter á Dom - 18-00 ás 00:00</span>
+    </div>
+</div>
+</header>
+
+<!--FIM DO HEADER-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="text-2xl md:text-4xl font-bold text-center mt-9 mb-6">
+Menu Principal 
+</h2>
+
+<!-- INICIO DO MENU-->
+<div id="menu">
+<main class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-12 mx-auto max-w-7xl px-2 mb-16 ">
+
+<!--COMEÇO DOS PRODUTO-->
+<div class="flex gap-2">
+    <img src="imagens_cardapio/hamb-1.png" alt="smach salada duplo"
+ class="w-28 h-28 rounded-md hover:scale-110 duration-500">
+
+<div>
+    <p class="font-bold">Smach salada duplo</p>
+    <p class="text-sm">Pão brioche + 2 hambúrgueres de costela + Mussarela + Tomate + Cebola caramelizada + Molho especial da casa + Alface.
+    </p>
+
+
+<div class="flex items-center gap-2 justify-between mt-3" data-name="Smach salada duplo" data-price="30.00">
+    <p class="font-bold text-lg">R$ 30.00 </p>
+    <button class="bg-gray-950 px-3 rounded add-lanches-btn" > 
+        <img src="imagens_cardapio/shopping_cart_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="" class="w-8 h-8 ">
+    </button>
+            </div>
+                  </div>
+
+</div>
+
+<!--FIM DOS PRODUTO-->
+
+
+
+
+
+
+
+<!--COMEÇO DO PRODUTO 2-->
+
+
+<div class="flex gap-2">
+    <img src="imagens_cardapio/hamb-2.png" alt="smach bacon duplo"
+ class="w-28 h-28 rounded-md hover:scale-110 duration-500">
+
+<div>
+    <p class="font-bold">Smach Bancon duplo</p>
+    <p class="text-sm">Pão brioche + 2 hambúrgueres de costela + Mussarela + Fatias de Bacon sequinho + Cebola caramelizada + Molho especial da casa.
+    </p>
+
+
+<div class="flex items-center gap-2 justify-between mt-3" data-name="Smach bacon duplo" data-price="32.00">
+    <p class="font-bold text-lg">R$ 32.00 </p>
+    <button class="bg-gray-950 px-3 rounded add-lanches-btn" > 
+        <img src="imagens_cardapio/shopping_cart_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="" class="w-8 h-8 ">
+    </button>
+            </div>
+                  </div>
+
+</div>
+<!--FIM DO PRODUTO 2-->
+
+
+
+
+
+
+
+
+
+<!--COMEÇO DO PRODUTO 3-->
+
+
+<div class="flex gap-2">
+    <img src="imagens_cardapio/hamb-3.png" alt="smach burguer duplo"
+ class="w-28 h-28 rounded-md hover:scale-110 duration-500">
+
+<div>
+    <p class="font-bold">Smach Burguer duplo</p>
+    <p class="text-sm">Pão brioche + 2 hambúrgueres de costela + 4 fatias de queijo cheddar + molho branco da casa + Molho especial da casa.
+    </p>
+
+
+<div class="flex items-center gap-2 justify-between mt-3" data-name="Smach burguer duplo" data-price="29.00">
+    <p class="font-bold text-lg">R$ 29.00 </p>
+    <button class="bg-gray-950 px-3 rounded add-lanches-btn" > 
+        <img src="imagens_cardapio/shopping_cart_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="" class="w-8 h-8 ">
+    </button>
+            </div>
+                  </div>
+
+</div>
+<!--FIM DO PRODUTO 3-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--COMEÇO DO PRODUTO 4-->
+
+
+<div class="flex gap-2">
+    <img src="imagens_cardapio/hamb-4.png" alt="smach Frango"
+ class="w-28 h-28 rounded-md hover:scale-110 duration-500">
+
+<div>
+    <p class="font-bold">Smach frango </p>
+    <p class="text-sm">Pão brioche + 1 hambúrgueres de frango +queijo cheddar + picleks + salada + tomate + cebola + Molho especial da casa.
+    </p>
+
+
+<div class="flex items-center gap-2 justify-between mt-3" data-name="Smach Frango" data-price="28.00">
+    <p class="font-bold text-lg">R$ 28.00 </p>
+    <button class="bg-gray-950 px-3 rounded add-lanches-btn" > 
+        <img src="imagens_cardapio/shopping_cart_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="" class="w-8 h-8 ">
+    </button>
+            </div>
+                  </div>
+</div>
+<!--FIM DO PRODUTO 4-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--COMEÇO DO PRODUTO 5-->
+
+<div class="flex gap-2">
+    <img src="imagens_cardapio/hamb-5.png" alt="smach salada"
+ class="w-28 h-28 rounded-md hover:scale-110 duration-500">
+
+<div>
+    <p class="font-bold">Smach Salada</p>
+    <p class="text-sm">Pão brioche + hambúrguer de costela + Mussarela + Tomate + Cebola caramelizada + Molho especial da casa + Alface.
+    </p>
+
+
+<div class="flex items-center gap-2 justify-between mt-3" data-name="Smach Salada" data-price="26.00">
+    <p class="font-bold text-lg">R$ 26.00 </p>
+    <button class="bg-gray-950 px-3 rounded add-lanches-btn" > 
+        <img src="imagens_cardapio/shopping_cart_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="" class="w-8 h-8 ">
+    </button>
+            </div>
+                  </div>
+</div>
+<!--FIM DO PRODUTO 5 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--COMEÇO DO PRODUTO 6-->
+
+<div class="flex gap-2">
+    <img src="imagens_cardapio/hamb-6.png" alt="Smach burguer"
+ class="w-28 h-28 rounded-md hover:scale-110 duration-500">
+
+<div>
+    <p class="font-bold">Smach Burguer</p>
+    <p class="text-sm">Pão brioche + hambúrguer de costela + Mussarela + Tomate + Cebola caramelizada + Molho especial da casa + Alface.
+    </p>
+
+
+<div class="flex items-center gap-2 justify-between mt-3" data-name="Smach burguer" data-price="26.00">
+    <p class="font-bold text-lg">R$ 26.00 </p>
+    <button class="bg-gray-950 px-3 rounded add-lanches-btn" > 
+        <img src="imagens_cardapio/shopping_cart_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="" class="w-8 h-8 ">
+    </button>
+            </div>
+                  </div>
+</div>
+<!--FIM DO PRODUTO 6 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--COMEÇO DO PRODUTO 7-->
+
+<div class="flex gap-2">
+    <img src="imagens_cardapio/hamb-7.png" alt="smach catupiry"
+ class="w-28 h-28 rounded-md hover:scale-110 duration-500">
+
+<div>
+    <p class="font-bold">Smach catupiry</p>
+    <p class="text-sm">Pão brioche + hambúrguer de costela + catupiry empanado + cheddar + Tomate + Cebola caramelizada + Molho especial da casa + Alface.
+    </p>
+
+
+<div class="flex items-center gap-2 justify-between mt-3" data-name="Smach catupiry" data-price="31.00">
+    <p class="font-bold text-lg">R$ 31.00 </p>
+    <button class="bg-gray-950 px-3 rounded add-lanches-btn" > 
+        <img src="imagens_cardapio/shopping_cart_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="" class="w-8 h-8 ">
+    </button>
+            </div>
+                  </div>
+</div>
+<!--FIM DO PRODUTO 7 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--COMEÇO DO PRODUTO 8-->
+
+<div class="flex gap-2">
+    <img src="imagens_cardapio/hamb-8.png" alt="smach vegetariano"
+ class="w-28 h-28 rounded-md hover:scale-110 duration-500">
+
+<div>
+    <p class="font-bold">Smach vegetariano </p>
+    <p class="text-sm">Pão brioche + hambúrguer de grão-de-bico + queijo cremoso de ervas + queijo cheddar + tomate fresco + cebola caramelizada + molho especial da casa + alface crocante.
+    </p>
+
+
+<div class="flex items-center gap-2 justify-between mt-3" data-name="Smach catupiry" data-price="30.00">
+    <p class="font-bold text-lg">R$ 30.00 </p>
+    <button class="bg-gray-950 px-3 rounded add-lanches-btn" > 
+        <img src="imagens_cardapio/shopping_cart_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="" class="w-8 h-8 ">
+    </button>
+            </div>
+                  </div>
+</div>
+<!--FIM DO PRODUTO 8 -->
+
+
+</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="mx-auto max-w-7 px-2 my-2">
+    <h2 class="text-2xl md:text-4xl font-bold text-center mt-9 mb-6">
+        Bebidas
+    </h2>
+</div>
+
+
+<!--INICIO DA GRID BEBIDAS-->
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 md:gap-12 mx-auto max-w-7xl px-2 mb-16 w-full" id="menu">
+
+
+    <!--ITEM 1-->
+
+    <div class="flex gap-2">
+        <img src="imagens_cardapio/refri-1.png" alt="Coca-Cola Lata"
+     class="w-28 h-28 rounded-md hover:scale-110 duration-500">
+    
+    <div>
+        <p class="font-bold">Coca-Cola Lata </p>
+        <p class="text-sm">Refrigerante Coca-Cola Lata 350ml
+        </p>
+    
+    
+    <div class="flex items-center gap-2 justify-between mt-3" data-name="Coca-Cola Lata" data-price="7.00">
+        <p class="font-bold text-lg">R$ 7.00 </p>
+        <button class="bg-gray-950 px-3 rounded add-lanches-btn" > 
+            <img src="imagens_cardapio/shopping_cart_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="" class="w-8 h-8 ">
+        </button>
+                </div>
+                      </div>
+    </div>
+
+
+     <!--FINAL DO ITEM 1-->
+
+
+
+
+
+
+
+        <!--INICIO DO ITEM 2-->
+
+
+    <div class="flex gap-2">
+        <img src="imagens_cardapio/CokeZero_12_089c6099-6ea6-40ef-9df9-5596a47f53de_large.webp" alt="Coca-Cola Zero Lata"
+     class="w-28 h-28 rounded-md hover:scale-110 duration-500">
+    
+    <div>
+        <p class="font-bold">Coca-Cola Zero Lata </p>
+        <p class="text-sm">Refrigerante Coca-Cola Zero Lata
+        </p>
+    
+    
+    <div class="flex items-center gap-2 justify-between mt-3" data-name="Coca-Cola Zero Lata" data-price="7.00">
+        <p class="font-bold text-lg">R$ 7.00 </p>
+        <button class="bg-gray-950 px-3 rounded add-lanches-btn" > 
+            <img src="imagens_cardapio/shopping_cart_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="" class="w-8 h-8 ">
+        </button>
+                </div>
+                      </div>
+    </div>
+   
+
+
+
+       <!--FINAL DO ITEM 2-->
+
+
+
+
+
+
+
+
+
+
+       <!--INICIO DO ITEM 3-->
+    <div class="flex gap-2">
+        <img src="imagens_cardapio/guarana1-b5047b4aaf1e0c9b6b16192134101772-1024-1024.png" alt="Guaraná Lata"
+     class="w-28 h-28 rounded-md hover:scale-110 duration-500">
+    
+    <div>
+        <p class="font-bold">Guaraná Antarctica Lata </p>
+        <p class="text-sm">Refrigerante Guaraná Lata 350ml
+        </p>
+    
+    
+    <div class="flex items-center gap-2 justify-between mt-3" data-name="Guaraná Lata" data-price="7.00">
+        <p class="font-bold text-lg">R$ 7.00 </p>
+        <button class="bg-gray-950 px-3 rounded add-lanches-btn" > 
+            <img src="imagens_cardapio/shopping_cart_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="" class="w-8 h-8 ">
+        </button>
+                </div>
+                      </div>
+                    </div>
+
+
+               <!--FINAL DO ITEM 3-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+               
+       <!--INICIO DO ITEM 4-->
+    <div class="flex gap-2">
+        <img src="imagens_cardapio/Refrigerante_Antarctica_Guarana_Zero_350_ml_Lata_2x_be2cefff-efa5-410a-a1b3-697b42803840_380x.png" alt="Guaraná Zero Lata"
+     class="w-28 h-28 rounded-md hover:scale-110 duration-500">
+    
+    <div>
+        <p class="font-bold">Guaraná Antarctica Zero Lata </p>
+        <p class="text-sm">Refrigerante Guaraná Zero Lata
+        </p>
+    
+    
+    <div class="flex items-center gap-2 justify-between mt-3" data-name="Guaraná Zero Lata" data-price="7.00">
+        <p class="font-bold text-lg">R$ 7.00 </p>
+        <button class="bg-gray-950 px-3 rounded add-lanches-btn" > 
+            <img src="imagens_cardapio/shopping_cart_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="" class="w-8 h-8 ">
+        </button>
+                </div>
+                      </div>
+                    </div>
+
+
+               <!--FINAL DO ITEM 4-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <!--INICIO DO ITEM 5-->
+    <div class="flex gap-2">
+        <img src="imagens_cardapio/FANTA-UVA-LT-350ML-6UN.png" alt="Fanta uva Lata"
+     class="w-28 h-28 rounded-md hover:scale-110 duration-500">
+    
+    <div>
+        <p class="font-bold">Fanta Uva Lata </p>
+        <p class="text-sm">Refrigerante Fanta  Uva Lata 350ml
+        </p>
+    
+    
+    <div class="flex items-center gap-2 justify-between mt-3" data-name="Fanta Uva Lata" data-price="7.00">
+        <p class="font-bold text-lg">R$ 7.00 </p>
+        <button class="bg-gray-950 px-3 rounded add-lanches-btn" > 
+            <img src="imagens_cardapio/shopping_cart_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="" class="w-8 h-8 ">
+        </button>
+                </div>
+                      </div>
+                    </div>
+
+
+               <!--FINAL DO ITEM 5-->
+
+
+
+
+
+
+
+
+
+
+   <!--INICIO DO ITEM 6-->
+   <div class="flex gap-2">
+    <img src="imagens_cardapio/fanta-laranja-lata.png" alt="Fanta Laranja Lata"
+ class="w-28 h-28 rounded-md hover:scale-110 duration-500">
+
+<div>
+    <p class="font-bold">Fanta Laranja Lata </p>
+    <p class="text-sm">Refrigerante Fanta de Laranja Lata
+    </p>
+
+
+<div class="flex items-center gap-2 justify-between mt-3" data-name="Fanta Laranja Lata" data-price="7.00">
+    <p class="font-bold text-lg">R$ 7.00 </p>
+    <button class="bg-gray-950 px-3 rounded add-lanches-btn" > 
+        <img src="imagens_cardapio/shopping_cart_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="" class="w-8 h-8 ">
+    </button>
+            </div>
+                  </div>
+                </div>
+
+
+           <!--FINAL DO ITEM 6-->
+
+
+
+
+
+
+
+
+
+
+
+
+<!--INICIO DO ITEM 7-->
+<div class="flex gap-2">
+    <img src="imagens_cardapio/coca-600-zero.png" alt="Coca-Cola Zero 600ml"
+ class="w-28 h-28 rounded-md hover:scale-110 duration-500">
+
+<div>
+    <p class="font-bold">Coca-Cola Zero 600ml </p>
+    <p class="text-sm">Refrigerante Coca-Cola Zero 600ML
+    </p>
+
+
+<div class="flex items-center gap-2 justify-between mt-3" data-name="Coca-Cola Zero 600ml" data-price="12.00">
+    <p class="font-bold text-lg">R$ 12.00 </p>
+    <button class="bg-gray-950 px-3 rounded add-lanches-btn" > 
+        <img src="imagens_cardapio/shopping_cart_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="" class="w-8 h-8 ">
+    </button>
+            </div>
+                  </div>
+                </div>
+
+
+           <!--FINAL DO ITEM 7-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--INICIO DO ITEM 8-->
+<div class="flex gap-2">
+    <img src="imagens_cardapio/REFRIGERANTE-COCA-COLA-GARRAFA-600ML.png" alt="Coca-Cola 600ml"
+ class="w-28 h-28 rounded-md hover:scale-110 duration-500">
+
+<div>
+    <p class="font-bold">Coca-Cola 600ml </p>
+    <p class="text-sm">Refrigerante Coca - Cola com 600ML
+    </p>
+
+
+<div class="flex items-center gap-2 justify-between mt-3" data-name="Coca-Cola 600ml" data-price="12.00">
+    <p class="font-bold text-lg">R$ 12.00 </p>
+    <button class="bg-gray-950 px-3 rounded add-lanches-btn" > 
+        <img src="imagens_cardapio/shopping_cart_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="" class="w-8 h-8 ">
+    </button>
+            </div>
+                  </div>
+                </div>
+
+                  <!--FINAL DO ITEM 8-->
+
+
+
+                  
+
+
+
+
+
+
+
+
+
+<!--INICIO DO ITEM 9-->
+<div class="flex gap-2">
+    <img src="imagens_cardapio/guarana 600ml.png" alt="Guaraná 600ml"
+ class="w-28 h-28 rounded-md hover:scale-110 duration-500">
+
+<div>
+    <p class="font-bold">Guaraná Antarctica 600ml </p>
+    <p class="text-sm">Refrigerante Guaraná Antarctica 600ML
+    </p>
+
+
+<div class="flex items-center gap-2 justify-between mt-3" data-name="Guaraná 600ml" data-price="12.00">
+    <p class="font-bold text-lg">R$ 12.00 </p>
+    <button class="bg-gray-950 px-3 rounded add-lanches-btn" > 
+        <img src="imagens_cardapio/shopping_cart_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="" class="w-8 h-8 ">
+    </button>
+            </div>
+                  </div>
+                </div>
+
+                  <!--FINAL DO ITEM 9-->
+
+
+
+
+
+
+
+
+
+
+
+                  
+
+
+
+
+
+
+
+<!--INICIO DO ITEM 10-->
+<div class="flex gap-2">
+    <img src="imagens_cardapio/fanta_600ml.png" alt="Fanta 600ml"
+ class="w-28 h-28 rounded-md hover:scale-110 duration-500">
+
+<div>
+    <p class="font-bold">Fanta 600ml </p>
+    <p class="text-sm">Refrigerante Fanta sabor laranja 600ml
+    </p>
+
+
+<div class="flex items-center gap-2 justify-between mt-3" data-name="Fanta 600ml" data-price="12.00">
+    <p class="font-bold text-lg">R$ 12.00 </p>
+    <button class="bg-gray-950 px-3 rounded add-lanches-btn" > 
+        <img src="imagens_cardapio/shopping_cart_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="" class="w-8 h-8 ">
+    </button>
+            </div>
+                  </div>
+                </div>
+
+                  <!--FINAL DO ITEM 10-->
+
+
+
+
+
+
+
+
+
+                  
+
+
+<!--INICIO DO ITEM 11-->
+<div class="flex gap-2">
+    <img src="imagens_cardapio/fanta-uva-600ml.webp" alt="Fanta uva 600ml"
+ class="w-28 h-28 rounded-md hover:scale-110 duration-500">
+
+<div>
+    <p class="font-bold">Fanta Uva 600ml </p>
+    <p class="text-sm">Refrigerante Fanta de sabor uva 600ml
+    </p>
+
+
+<div class="flex items-center gap-2 justify-between mt-3" data-name="Fanta uva 600ml" data-price="12.00">
+    <p class="font-bold text-lg">R$ 12.00 </p>
+    <button class="bg-gray-950 px-3 rounded add-lanches-btn" > 
+        <img src="imagens_cardapio/shopping_cart_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="" class="w-8 h-8 ">
+    </button>
+            </div>
+                  </div>
+                </div>
+
+                  <!--FINAL DO ITEM 11-->
+
+
+
+
+
+
+
+
+
+
+                  <!--INICIO DO ITEM 12-->
+<div class="flex gap-2">
+    <img src="imagens_cardapio/coca_2ltr.png" alt="Coca-Cola 2L"
+ class="w-28 h-28 rounded-md hover:scale-110 duration-500">
+
+<div>
+    <p class="font-bold">Coca-Cola 2L</p>
+    <p class="text-sm">Refrigerante Coca - Cola com 2 litros
+    </p>
+
+
+<div class="flex items-center gap-2 justify-between mt-3" data-name="Coca-Cola 2L" data-price="14.00">
+    <p class="font-bold text-lg">R$ 14.00 </p>
+    <button class="bg-gray-950 px-3 rounded add-lanches-btn" > 
+        <img src="imagens_cardapio/shopping_cart_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="" class="w-8 h-8 ">
+    </button>
+            </div>
+                  </div>
+                </div>
+
+                  <!--FINAL DO ITEM 12-->
+
+
+
+
+
+
+
+
+                    <!--INICIO DO ITEM 13-->
+<div class="flex gap-2">
+    <img src="imagens_cardapio/coca-zero-2litros.png" alt="Coca-Cola 2L"
+ class="w-28 h-28 rounded-md hover:scale-110 duration-500">
+
+<div>
+    <p class="font-bold">Coca-Cola Zero 2L</p>
+    <p class="text-sm">Refrigerante Coca-Cola Zero 2 Litros
+    </p>
+
+
+<div class="flex items-center gap-2 justify-between mt-3" data-name="Coca-Cola Zero 2L" data-price="14.00">
+    <p class="font-bold text-lg">R$ 14.00 </p>
+    <button class="bg-gray-950 px-3 rounded add-lanches-btn" > 
+        <img src="imagens_cardapio/shopping_cart_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="" class="w-8 h-8 ">
+    </button>
+            </div>
+                  </div>
+                </div>
+
+                  <!--FINAL DO ITEM 13-->
+
+
+
+
+
+
+
+
+
+<!--INICIO DO ITEM 14-->
+<div class="flex gap-2">
+    <img src="imagens_cardapio/guarana 2 litros.png" alt="Coca-Cola 2L"
+ class="w-28 h-28 rounded-md hover:scale-110 duration-500">
+
+<div>
+    <p class="font-bold">Guaraná Antarctica 2L</p>
+    <p class="text-sm">Refrigerante Guaraná Antarctica 2L
+    </p>
+
+
+<div class="flex items-center gap-2 justify-between mt-3" data-name="Guaraná Antarctica 2L" data-price="14.00">
+    <p class="font-bold text-lg">R$ 14.00 </p>
+    <button class="bg-gray-950 px-3 rounded add-lanches-btn" > 
+        <img src="imagens_cardapio/shopping_cart_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="" class="w-8 h-8 ">
+    </button>
+            </div>
+                  </div>
+                </div>
+
+                  <!--FINAL DO ITEM 14-->
+
+
+
+
+
+
+                  <!--INICIO DO ITEM 14-->
+<div class="flex gap-2">
+    <img src="imagens_cardapio/guarana zero 2l.png" alt="Coca-Cola 2L"
+ class="w-28 h-28 rounded-md hover:scale-110 duration-500">
+
+<div>
+    <p class="font-bold">Guaraná Antarctica Zero 2L</p>
+    <p class="text-sm">Refrigerante Guaraná Zero 2 Litros
+    </p>
+
+
+<div class="flex items-center gap-2 justify-between mt-3" data-name="Guaraná Antarctica Zero 2L" data-price="14.00">
+    <p class="font-bold text-lg">R$ 14.00 </p>
+    <button class="bg-gray-950 px-3 rounded add-lanches-btn" > 
+        <img src="imagens_cardapio/shopping_cart_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="" class="w-8 h-8 ">
+    </button>
+            </div>
+                  </div>
+                </div>
+
+                  <!--FINAL DO ITEM 14-->
+
+
+
+
+
+
+
+
+
+</div>
+<!--FIM DA GRID BEBIDAS-->
+
+
+
+
+</div>
+<!-- FIM DO MENU -->
+
+
+
+
+
+
+
+
+
+
+
+<!--INICIO DO MODAL-->
+<div class="bg-black/60 w-full h-full fixed top-0 left-0 z-[99] hidden justify-center items-center" id="modal">
+    <div class="bg-white p-5 rounded-md min-w-[90%] md:min-w-[600px]">
+<h2 class="text-center text-2xl font-bold mb-2">Meu Carrinho</h2>
+
+
+<div id="cart-itens" class="flex justify-between mb-2 flex-col"></div>
+
+<p class="font-bold">Total: <span id="cart-total">R$ 0.00</span></p>
+
+<p class="font-bold mt-3">Endereço de entrega: </p>
+<input type="text" placeholder="Digite seu endereço completo" id="endereco" class="w-full border-2 p-2 rounded my-1">
+<p class="text-red-500 hidden" id="endereco_erro">Digite seu endereço completo!</p>
+
+<div class="flex itens-center justify-between mt-5 w-full">
+<button id="btn-model-fechar" class="bg-red-600 text-white py-1 px-4 rounded ">Fechar</button>
+<button id="bnt-finalizar" class="bg-green-500 text-white py-1 px-4 rounded">Finalizar Pedido</button>
+</div>
+
+
+</div>
+</div>
+<!--FIM DO MODAL-->
+
+
+
+
+<!--INICIO DO FOOTER-->
+
+<footer class="w-full bg-red-600 py-3 fixed bottom-0 z-40 flex items-center justify-center">
+    <button class="flex text-white gap-1 font-extrabold" id="cart-btn" >
+        (<span id="cart-count">0</span>)
+        Veja meu carrinho
+        <img src="imagens_cardapio/shopping_cart_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="" class="w-6 h-6 " >
+    </button>
+
+</footer>
+
+
+<!--FINAL DO FOOTER-->
+
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="teste.js"></script>
+</body>
+</html>
