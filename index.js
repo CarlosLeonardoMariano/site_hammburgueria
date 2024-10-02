@@ -9,6 +9,7 @@ const itensCarrinho = document.getElementById('cart-itens')
 const totalValor = document.getElementById('cart-total')
 const ContarItens = document.getElementById('cart-count')
 const horario = document.getElementById("date-span")
+const enderecoNumero = document.getElementById("endereco_numero")
 
 let carrinho = []
 
@@ -152,6 +153,7 @@ endereco.addEventListener('input', function(evento){
 
 
 
+
   // se eu clicar e nao tiver nada no carrinho vai colocar a borda vermelha // FINALIZANDO O PEDIDO
 bntFinalizar.addEventListener('click', ()=>{
     const verificarAberto = horarioRestaurante()
@@ -195,7 +197,7 @@ bntFinalizar.addEventListener('click', ()=>{
 function horarioRestaurante(){
     const data = new Date();
         const hora = data.getHours();
-            return hora >= 18 && hora < 24;  // verdadeiro se estiver aberto
+            return hora >= 1 && hora < 24;  // verdadeiro se estiver aberto
 }
 
                 const horario_Aberto = horarioRestaurante();
