@@ -34,6 +34,17 @@
 </header>
 
 <!--FIM DO HEADER-->
+<div class="bg-white w-[80%] md:w-[600px] h-[400px] leading-5 border-none top-0 left-1/2 fixed p-3 transform -translate-y-full -translate-x-1/2 rounded-lg transition-transform duration-1000 ease-in-out" id="panel">
+
+    <button class="bg-red-500 hover:bg-red-600 p-3 w-full" id="close-button">X</button>
+    <h2 class="font-black p-1">Horário de Funcionamento</h2>
+    <p class="border-t-2 border-black flex justify-between items-center font-medium p-1">TERÇA-FEIRA <span class="flex justify-between items-center font-medium p-3">18:00 - 23:00</span></p>
+    <p class="border-t-2 border-black flex justify-between items-center font-medium p-1">QUARTA-FEIRA <span class="flex justify-between items-center font-medium p-3">18:00 - 23:00</span></p>
+    <p class="border-t-2 border-black flex justify-between items-center font-medium p-1">QUINTA-FEIRA <span class="flex justify-between items-center font-medium p-3">18:00 - 23:00</span></p>
+    <p class="border-t-2 border-black flex justify-between items-center font-medium p-1">SEXTA-FEIRA <span class="flex justify-between items-center font-medium p-3">18:00 - 23:00</span></p>
+    <p class="border-t-2 border-black flex justify-between items-center font-medium p-1">SÁBADO <span class="flex justify-between items-center font-medium p-3">18:00 - 23:00</span></p>
+    <p class="border-t-2 border-black flex justify-between items-center font-medium p-1">DOMINGO <span class="flex justify-between items-center font-medium p-3">18:00 - 23:00</span></p>
+</div>
 
 
 
@@ -894,22 +905,23 @@ Menu Principal
 
 <p class="font-bold">Total: <span id="cart-total">R$ 0.00</span></p>
 
+<div>
+    <button>
 <p class="font-medium mt-3"> QUAL É SEU NOME ?
-<input type="text" placeholder="Digite o seu nome" id="endereco" class="w-full border-2 p-2 rounded my-1 border-x-gray-500"> </p>
+<input type="text" placeholder="Digite o seu nome" id="endereco" class="w-full border-2 p-1 rounded my-1 border-x-gray-500"> </p>
 
 <p class="font-medium mt-3"> NOME DA RUA OU AV ?
-<input type="text" placeholder="Digite o nome da rua completo " id="endereco" class="w-full border-2 p-2 rounded my-1"> </p>
+<input type="text" placeholder="Digite o nome da rua completo " id="endereco" class="w-full border-2 p-1 rounded my-1  border-x-gray-500"> </p>
 
 <p class="font-medium mt-3"> NÚMERO ? 
-<input type="text" placeholder="Digite o numero" id="endereco" class="w-full border-2 p-2 rounded my-1"> </p>
+<input type="text" placeholder="Digite o numero" id="endereco" class="w-full border-2 p-1 rounded my-1  border-x-gray-500"> </p>
 
 <p class="font-medium mt-3"> PONTO DE REFERENCIA ?
-<input type="text" placeholder="Ponto de Referencia" id="endereco_referencia" class="w-full border-2 p-2 rounded my-1">
+<input type="text" placeholder="Ponto de Referencia" id="endereco_referencia" class="w-full border-2 p-1 rounded my-1  border-x-gray-500 ">
 </p>
+</button>
+</div>
 
-<p class="font-medium mt-3">DIGITE SEU WHATSAPP ?
-<input type="text" placeholder="Digite o Whatsapp " id="endereco_whatsapp" class="w-full border-2 p-2 rounded my-1"></p>
-<p class="text-red-500 hidden" id="endereco_erro">Digite seu endereço completo!</p>
 
 <div class="flex itens-center justify-between mt-5 w-full">
 <button id="btn-model-fechar" class="bg-red-600 text-white py-1 px-4 rounded ">Fechar</button>

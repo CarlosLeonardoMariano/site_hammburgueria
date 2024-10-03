@@ -211,3 +211,16 @@ function horarioRestaurante(){
 
 
 
+                    const panel = document.getElementById('panel');
+    const closeButton = document.getElementById('close-button');
+    const dateSpan = document.getElementById('date-span');
+
+    dateSpan.addEventListener('click', () => {
+        panel.classList.toggle('-translate-y-full'); // Mostra o painel
+        panel.classList.toggle('translate-y-1/5'); // Mover para baixo até a metade
+    });
+
+    closeButton.addEventListener('click', () => {
+        panel.classList.add('-translate-y-full'); // Oculta o painel
+        panel.classList.remove('translate-y-1/5'); // Reseta a posição
+    });
