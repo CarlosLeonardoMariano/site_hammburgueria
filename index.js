@@ -83,19 +83,19 @@ function updateModal() {
 
     // Criar a div que terá a classe para rolagem
     const modalConteudo = document.createElement('div');
-    modalConteudo.classList.add('modal-conteudo', 'max-h-60', 'overflow-y-auto'); // Use Tailwind para altura e rolagem
+    modalConteudo.classList.add('modal-conteudo', 'max-h-60', 'overflow-y-hidden'); // Use Tailwind para altura e rolagem
 
     carrinho.forEach(item => {
         const cartElementoNovo = document.createElement('div');
         cartElementoNovo.classList.add('flex', 'justify-between', 'mb-4', 'flex-col');
         cartElementoNovo.innerHTML = `
-            <div class="flex items-center justify-between border-black border-2 px-2 mt-0">
+            <div class="flex items-center justify-between border-black border-2 px-1 mt-0">
                 <div>
                     <p class="font-bold">${item.dataName}</p>
                     <p class="font-medium">QTD: ${item.quantidade}</p>
                     <p class="font-semibold mt-2 mb-2">R$ ${item.dataPrice.toFixed(2)}</p>
                 </div>
-                <button class="py-2 px-2 bg-red-600 text-white rounded-lg justify-center items-center remove_btn" data-name="${item.dataName}">REMOVER ITENS</button>
+                <button class="py-1 px-1 bg-red-600 text-white rounded-lg justify-center items-center remove_btn" data-name="${item.dataName}">REMOVER ITENS</button>
             </div>`;
 
         total += item.dataPrice * item.quantidade;
@@ -224,3 +224,4 @@ function horarioRestaurante(){
         panel.classList.add('-translate-y-full'); // Oculta o painel
         panel.classList.remove('translate-y-1/5'); // Reseta a posição
     });
+
