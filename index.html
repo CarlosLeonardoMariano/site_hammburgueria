@@ -27,7 +27,7 @@
     <h1 class="text-4xl mt-5 mb-2 font-bold text-white">PIRACAIA BURGUER</h1>
     <span class="text-white font-medium"> Rua Valentin Del Nero - Piracaia-SP</span>
 
-    <div class="bg-green-600 px-4 py-2 rounded-lg mt-5 " id="date-span">
+    <div class="bg-green-600 px-4 py-2 rounded-lg mt-5 cursor-pointer " id="date-span">
         <span class="text-white font-semibold"> Ter á Dom - 18-00 ás 00:00</span>
     </div>
 </div>
@@ -897,7 +897,7 @@ Menu Principal
 
 <!--INICIO DO MODAL-->
 <div class="bg-black/60 w-full h-full fixed top-0 left-0 z-[99] hidden justify-center items-center" id="modal">
-    <div class="bg-white p-5 rounded-md min-w-[90%] md:min-w-[600px]">
+    <div class="bg-white p-5 rounded-md min-w-[90%] md:min-w-[690px]">
 <h2 class="text-center text-2xl font-bold mb-2">Meu Carrinho</h2>
 
 
@@ -905,21 +905,25 @@ Menu Principal
 
 <p class="font-bold">Total: <span id="cart-total">R$ 0.00</span></p>
 
-<div class="endereço_rolar">
-    <button>
+<div class="endereço_rolar w-[100%] justify-center items-center">
+    
+        
+    <button class="w-full ">
 <p class="font-medium mt-3"> QUAL É SEU NOME ?
-<input type="text" placeholder="Digite o seu nome" id="endereco" class="w-full border-2 p-1 rounded my-1 border-x-gray-500"> </p>
+<input type="text" placeholder="Digite o seu nome" id="endereco_nome" class="w-full border-2 p-1 rounded my-1 border-x-gray-500"> </p>
 
 <p class="font-medium mt-3"> NOME DA RUA OU AV ?
 <input type="text" placeholder="Digite o nome da rua completo " id="endereco" class="w-full border-2 p-1 rounded my-1  border-x-gray-500"> </p>
 
 <p class="font-medium mt-3"> NÚMERO ? 
-<input type="text" placeholder="Digite o numero" id="endereco" class="w-full border-2 p-1 rounded my-1  border-x-gray-500"> </p>
+<input type="text" placeholder="Digite o numero" id="endereco_numero" class="w-full border-2 p-1 rounded my-1  border-x-gray-500"> </p>
 
 <p class="font-medium mt-3"> PONTO DE REFERENCIA ?
 <input type="text" placeholder="Ponto de Referencia" id="endereco_referencia" class="w-full border-2 p-1 rounded my-1  border-x-gray-500 ">
 </p>
 </button>
+
+
 </div>
 
 

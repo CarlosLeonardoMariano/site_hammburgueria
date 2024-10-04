@@ -754,6 +754,10 @@ video {
   margin-bottom: 0.5rem;
 }
 
+.mb-1 {
+  margin-bottom: 0.25rem;
+}
+
 .mb-16 {
   margin-bottom: 4rem;
 }
@@ -772,6 +776,10 @@ video {
 
 .mt-0 {
   margin-top: 0px;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
 }
 
 .mt-2 {
@@ -937,8 +945,8 @@ video {
   width: 2rem;
 }
 
-.w-\[600px\] {
-  width: 600px;
+.w-\[80\%\] {
+  width: 80%;
 }
 
 .w-\[this-is\\\\\] {
@@ -957,12 +965,8 @@ video {
   width: 100%;
 }
 
-.w-\[80\] {
-  width: 80;
-}
-
-.w-\[80\%\] {
-  width: 80%;
+.w-\[100\%\] {
+  width: 100%;
 }
 
 .min-w-\[90\%\] {
@@ -1027,11 +1031,6 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.translate-y-1\/4 {
-  --tw-translate-y: 25%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
 .\!transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
 }
@@ -1050,6 +1049,10 @@ video {
 
 .transform-none {
   transform: none;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
 .touch-auto {
@@ -2802,27 +2805,44 @@ body{
 }
 
 .modal-conteudo {
-  max-height: 400px;
+  max-height: 150px;
   /* ou o tamanho que você preferir */
   overflow-y: auto;
   /* permite rolagem vertical */
 }
 
-/* Overlay de fundo */
+.endereço_rolar{
+  max-height: 200px;
+  overflow-y: auto;
+}
 
-.overlay2 {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  -webkit-backdrop-filter: blur(1px);
-          backdrop-filter: blur(1px);
-  display: none;
-  /* Oculta o overlay por padrão */
-  z-index: 1000;
-  /* Garante que o overlay esteja acima de outros elementos */
+/* Estilo para dispositivos móveis */
+
+@media (max-width: 600px) {
+  /* Ajuste a largura conforme necessário */
+
+  .modal-conteudo {
+    max-height: 100px;
+    /* altura menor para celular */
+    overflow-y: auto;
+    /* permite rolagem vertical */
+  }
+}
+
+.endereço_rolar {
+  max-height: 200px;
+  /* tamanho padrão */
+  overflow-y: auto;
+  /* permite rolagem vertical */
+}
+
+/* Estilo para dispositivos móveis */
+
+@media (max-width: 600px) {
+  .endereço_rolar {
+    max-height: 150px;
+    /* altura menor para celular */
+  }
 }
 
 @media (min-width: 640px) {
@@ -2901,16 +2921,16 @@ body{
 }
 
 @media (min-width: 768px) {
-  .md\:w-\[80\%\] {
-    width: 80%;
-  }
-
   .md\:w-\[600px\] {
     width: 600px;
   }
 
-  .md\:min-w-\[600px\] {
-    min-width: 600px;
+  .md\:min-w-\[650px\] {
+    min-width: 650px;
+  }
+
+  .md\:min-w-\[690px\] {
+    min-width: 690px;
   }
 
   .md\:grid-cols-2 {
@@ -2940,5 +2960,3 @@ body{
     }
   }
 }
-
-

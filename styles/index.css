@@ -8,18 +8,13 @@ body{
 }
 
 .modal-conteudo {
-    max-height: 150px; /* ou o tamanho que você preferir */
-    overflow-y: hidden; /* permite rolagem vertical */
+    max-height: 250px; /* ou o tamanho que você preferir */
+    overflow-y: auto; /* permite rolagem vertical */
 }
 
 .endereço_rolar{
     max-height: 200px;
     overflow-y: auto;
-}
-
-.modal-conteudo {
-    max-height: 150px; /* tamanho padrão */
-    overflow-y: hidden; /* sem rolagem vertical */
 }
 
 /* Estilo para dispositivos móveis */

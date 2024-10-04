@@ -10,6 +10,8 @@ const totalValor = document.getElementById('cart-total')
 const ContarItens = document.getElementById('cart-count')
 const horario = document.getElementById("date-span")
 const enderecoNumero = document.getElementById("endereco_numero")
+const endereco_nome =  document.getElementById("endereco_nome")
+const referencia = document.getElementById("endereco_referencia")
 
 let carrinho = []
 
@@ -77,39 +79,58 @@ updateModal()
 
 //função para aparecer os itens no modal
 
+
+
+
 function updateModal() {
     itensCarrinho.innerHTML = "";
-    let total = 0;
+    let total = 0; // Total definido aqui
 
-    // Criar a div que terá a classe para rolagem
     const modalConteudo = document.createElement('div');
-    modalConteudo.classList.add('modal-conteudo', 'max-h-60', 'overflow-y-hidden'); // Use Tailwind para altura e rolagem
+    modalConteudo.classList.add('modal-conteudo', 'max-h-60', 'overflow-y-auto');
 
     carrinho.forEach(item => {
         const cartElementoNovo = document.createElement('div');
         cartElementoNovo.classList.add('flex', 'justify-between', 'mb-4', 'flex-col');
         cartElementoNovo.innerHTML = `
-            <div class="flex items-center justify-between border-black border-2 px-1 mt-0">
+            <div class="flex items-center justify-between px-1 mt-0">
                 <div>
                     <p class="font-bold">${item.dataName}</p>
                     <p class="font-medium">QTD: ${item.quantidade}</p>
-                    <p class="font-semibold mt-2 mb-2">R$ ${item.dataPrice.toFixed(2)}</p>
+                    <p class="font-semibold mt-1 mb-1">R$ ${item.dataPrice.toFixed(2)}</p>
                 </div>
-                <button class="py-1 px-1 bg-red-600 text-white rounded-lg justify-center items-center remove_btn" data-name="${item.dataName}">REMOVER ITENS</button>
+                <button class="py-1 px-1 border-none bg-red-600 text-white rounded-full justify-center items-center remove_btn" data-name="${item.dataName}">
+                    <img src= './imagens_cardapio/delete_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png'  class="w-8 h-8" >
+                </button>
             </div>`;
 
-        total += item.dataPrice * item.quantidade;
+        total += item.dataPrice * item.quantidade; // Acumula o total
         modalConteudo.appendChild(cartElementoNovo);
     });
+
+    itensCarrinho.appendChild(modalConteudo); // Adiciona ao modal apenas uma vez
+
+    // Atualizar a contagem de itens no carrinho
+    ContarItens.innerHTML = carrinho.length;
 
     // Exibir total formatado
     totalValor.textContent = total.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 
-    // Adicionar o modalConteudo ao itensCarrinho
-    itensCarrinho.appendChild(modalConteudo);
+    // Adicionando evento de clique para remover item
+    const removeButtons = document.querySelectorAll('.remove_btn');
+    removeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const itemName = this.dataset.name;
+            // Chame uma função para remover o item do carrinho
+            removeItemFromCart(itemName);
+        });
+    });
+}
 
-    // Atualizar a contagem de itens no carrinho
-    ContarItens.innerHTML = carrinho.length;
+function removeItemFromCart(itemName) {
+    // Lógica para remover o item do carrinho
+    carrinho = carrinho.filter(item => item.dataName !== itemName);
+    updateModal(); // Atualiza o modal após remoção
 }
 
 
@@ -138,45 +159,92 @@ function removeItemCard(name) {
 }
 
 
+// Validação do nome do endereço
+endereco_nome.addEventListener('input', function(evt) { 
+    let inputName = evt.target.value;
 
-// validando a entrega
-endereco.addEventListener('input', function(evento){
+    // Se o input não estiver vazio, remova a borda vermelha e esconda a mensagem de erro
+    if (inputName !== "") {
+        endereco_nome.classList.remove('border-red-500');
+        enderecoErro.classList.add("hidden");
+    } else {
+        // Se o campo estiver vazio, mantenha a borda vermelha
+        endereco_nome.classList.add('border-red-500');
+        enderecoErro.classList.remove("hidden");
+    }
+});
+
+// Validação do endereço
+endereco.addEventListener('input', function(evento) {
     let inputValue = evento.target.value;
 
-    if(inputValue !== ""){
-        endereco.classList.remove('border-red-500')
-        enderecoErro.classList.add("hidden")
-    }})
+    // Se o input não estiver vazio, remova a borda vermelha e esconda a mensagem de erro
+    if (inputValue !== "") {
+        endereco.classList.remove('border-red-500');
+        enderecoErro.classList.add("hidden");
+    } else {
+        // Se o campo estiver vazio, mantenha a borda vermelha
+        endereco.classList.add('border-red-500');
+        enderecoErro.classList.remove("hidden");
+    }
+});
 
 
+enderecoNumero.addEventListener('input', function(evento){
+    let inputNumero = evento.target.value;
+        if(inputNumero !== ""){
+            enderecoNumero.classList.remove("border-red-500");
+                enderecoErro.classList.add("hidden");
+    }
+})
 
-
-
-
-
-  // se eu clicar e nao tiver nada no carrinho vai colocar a borda vermelha // FINALIZANDO O PEDIDO
-bntFinalizar.addEventListener('click', ()=>{
-    const verificarAberto = horarioRestaurante()
-    if(!verificarAberto){ // !SIGNIFICA DIFERENÇA SE NAO TIVER ABERTO
-
+// Finalizando o pedido
+bntFinalizar.addEventListener('click', () => {
+    // Verifica se o restaurante está aberto
+    const verificarAberto = horarioRestaurante();
+    if (!verificarAberto) { 
         Toastify({
             text: "RESTAURANTE FECHADO",
             duration: 3000,
             close: true,
-            gravity: "top", // `top` or `bottom`
-            position: "right", // `left`, `center` or `right`
-            stopOnFocus: true, // Ele nao vai apagr enquanto o mouse estiver em cima
+            gravity: "top",
+            position: "right",
+            stopOnFocus: true,
             style: {
-              background: "#ef4444",},
+                background: "#ef4444",
+            },
         }).showToast();
-
         return;
     }
-    if(carrinho.length === 0)return;
-         if(endereco.value === ""){
-            enderecoErro.classList.remove("hidden")
-                endereco.classList.add('border-red-500')
-                 return;}
+
+    // Verifica se o carrinho está vazio
+    if (carrinho.length === 0) return;
+
+    // Verifica se o endereço está preenchido
+    if (endereco.value === "") {
+        enderecoErro.classList.remove("hidden");
+        endereco.classList.add('border-red-500');
+        return;
+    }
+
+    // Verifica se o nome do endereço está preenchido
+    if (endereco_nome.value === "") {
+        enderecoErro.classList.remove('hidden');
+        endereco_nome.classList.add('border-red-500');
+        return;
+    }
+
+    if(enderecoNumero.value === ""){
+        enderecoErro.classList.remove('hidden');
+        enderecoNumero.classList.add("border-red-500");
+        return;
+    
+    }
+
+    
+
+
+
 
 
 
@@ -186,13 +254,17 @@ bntFinalizar.addEventListener('click', ()=>{
             return `PEDIDOS: ${item.dataName}\nQUANTIDADE: ${item.quantidade}\nPreço: R$ ${item.dataPrice}\n-------------------------------------------------\n`;
           }).join("");
           
-          const msg = encodeURIComponent(`${whatsapp}\nEndereço: ${endereco.value}\nVALOR TOTAL: R$ ${totalValor.textContent}`);
+          const msg = encodeURIComponent(`${whatsapp}\n NOME: ${endereco_nome.value}\n ENDEREÇO: ${endereco.value}\n NUMERO: ${enderecoNumero.value}\n PONTO DE REFERENCIA: ${referencia.value}\n VALOR TOTAL: R$ ${totalValor.textContent}`);
             const phone = "+5511973245437";
                 window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
                     carrinho.length = 0;
                         updateModal();
           
 })
+  
+
+
+
                 // FUNÇÃO HORARIO 
 function horarioRestaurante(){
     const data = new Date();
