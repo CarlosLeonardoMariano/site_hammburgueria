@@ -12,6 +12,10 @@ const horario = document.getElementById("date-span")
 const enderecoNumero = document.getElementById("endereco_numero")
 const endereco_nome =  document.getElementById("endereco_nome")
 const referencia = document.getElementById("endereco_referencia")
+const btnDelivery = document.getElementById("btn-delivery")
+const btnRetirada = document.getElementById("btn-retirada")
+const infoDelivery = document.getElementById("info-delivery")
+const infoRetirada = document.getElementById("info-retirada")
 
 let carrinho = []
 
@@ -297,3 +301,26 @@ function horarioRestaurante(){
         panel.classList.remove('translate-y-1/5'); // Reseta a posição
     });
 
+
+// FUNÇÃO PRA ABRIR O BOTÃO DE DELIVERY
+
+btnDelivery.addEventListener('click', function() {
+    // Se o infoDelivery estiver escondido, mostre-o e esconda o infoRetirada
+    if (infoDelivery.classList.contains('hidden')) {
+        infoDelivery.classList.remove('hidden');
+        infoRetirada.classList.add('hidden');
+    } else {
+        infoDelivery.classList.add('hidden');
+    }
+});
+
+// FUNÇÃO PRA ABRIR O BOTÃO DE RETIRADA
+
+btnRetirada.addEventListener('click', ()=> {
+    if(infoRetirada.classList.contains('hidden')){
+        infoRetirada.classList.remove('hidden')
+        infoDelivery.classList.add('hidden')
+    } else{
+        infoRetirada.classList.add('hidden')
+    }
+})

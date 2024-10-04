@@ -905,10 +905,15 @@ Menu Principal
 
 <p class="font-bold">Total: <span id="cart-total">R$ 0.00</span></p>
 
-<div class="endereço_rolar w-[100%] justify-center items-center">
-    
+
+
+                <!--COMEÇO DA DIV-->
+    <div class="flex mt-2 w-full">
+        <button class="w-full border p-3 hover:bg-green-500 hover:text-white" id="btn-delivery">DELIVERY</button>
+        <button class="w-full border p-3 hover:bg-green-500 hover:text-white" id="btn-retirada">RETIRADA</button>
+    </div>
         
-    <button class="w-full ">
+    <div class="w-full hidden " id="info-delivery">
 <p class="font-medium mt-3"> QUAL É SEU NOME ?
 <input type="text" placeholder="Digite o seu nome" id="endereco_nome" class="w-full border-2 p-1 rounded my-1 border-x-gray-500"> </p>
 
@@ -916,22 +921,35 @@ Menu Principal
 <input type="text" placeholder="Digite o nome da rua completo " id="endereco" class="w-full border-2 p-1 rounded my-1  border-x-gray-500"> </p>
 
 <p class="font-medium mt-3"> NÚMERO ? 
-<input type="text" placeholder="Digite o numero" id="endereco_numero" class="w-full border-2 p-1 rounded my-1  border-x-gray-500"> </p>
+<input type="text" placeholder="Digite o numero da Casa ou AP " id="endereco_numero" class="w-full border-2 p-1 rounded my-1  border-x-gray-500"> </p>
 
 <p class="font-medium mt-3"> PONTO DE REFERENCIA ?
 <input type="text" placeholder="Ponto de Referencia" id="endereco_referencia" class="w-full border-2 p-1 rounded my-1  border-x-gray-500 ">
 </p>
-</button>
-
-
 </div>
 
+
+                        <!--PARTE DA RETIRADA-->
+
+<div class="w-full hidden " id="info-retirada">
+    <p class="font-medium mt-3"> QUAL É SEU NOME ?
+        <input type="text" placeholder="Digite o seu nome" id="endereco_nome" class="w-full border-2 p-1 rounded my-1 border-x-gray-500"> </p>
+
+        <p class="font-medium mt-3"> NÚMERO DO WHATSAPP ? 
+        <input type="text" placeholder="Digite o numero do seu whatsapp " id="endereco_whatsapp" class="w-full border-2 p-1 rounded my-1  border-x-gray-500"> </p>
+</div>
+
+
+
+
+                       <!--FINAL DA PARTE DA RETIRADA-->
 
 <div class="flex itens-center justify-between mt-5 w-full">
 <button id="btn-model-fechar" class="bg-red-600 text-white py-1 px-4 rounded ">Fechar</button>
 <button id="bnt-finalizar" class="bg-green-500 text-white py-1 px-4 rounded">Finalizar Pedido</button>
 </div>
 
+ <!--FINAL DA DIV-->
 
 </div>
 </div>

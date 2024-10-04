@@ -7,8 +7,18 @@ body{
     background-color: #f6f7f8;
 }
 
+footer {
+    z-index: 60; /* ou um valor maior */
+}
+
+
+.hidden {
+    display: none;
+}
+
+
 .modal-conteudo {
-    max-height: 250px; /* ou o tamanho que você preferir */
+    max-height: 150px; /* ou o tamanho que você preferir */
     overflow-y: auto; /* permite rolagem vertical */
 }
 
