@@ -17,13 +17,19 @@ footer {
 }
 
 
+#info-delivery {
+    max-height: 250px; /* ou outro valor que você preferir */
+    overflow-y: auto; /* Habilita rolagem vertical */
+}
+
+
 .modal-conteudo {
-    max-height: 150px; /* ou o tamanho que você preferir */
+    max-height: 200px; /* ou o tamanho que você preferir */
     overflow-y: auto; /* permite rolagem vertical */
 }
 
 .endereço_rolar{
-    max-height: 200px;
+    max-height: 100px;
     overflow-y: auto;
 }
 

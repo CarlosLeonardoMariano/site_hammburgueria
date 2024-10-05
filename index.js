@@ -16,6 +16,8 @@ const btnDelivery = document.getElementById("btn-delivery")
 const btnRetirada = document.getElementById("btn-retirada")
 const infoDelivery = document.getElementById("info-delivery")
 const infoRetirada = document.getElementById("info-retirada")
+const endereco_whatsapp = document.getElementById('endereco_whatsapp')
+const endereco_nomeRetirada = document.getElementById('endereco_nomeRetirada')
 
 let carrinho = []
 
@@ -100,7 +102,7 @@ function updateModal() {
             <div class="flex items-center justify-between px-1 mt-0">
                 <div>
                     <p class="font-bold">${item.dataName}</p>
-                    <p class="font-medium">QTD: ${item.quantidade}</p>
+                    <p class="font-medium">Quantidade: ${item.quantidade}</p>
                     <p class="font-semibold mt-1 mb-1">R$ ${item.dataPrice.toFixed(2)}</p>
                 </div>
                 <button class="py-1 px-1 border-none bg-red-600 text-white rounded-full justify-center items-center remove_btn" data-name="${item.dataName}">
@@ -202,6 +204,9 @@ enderecoNumero.addEventListener('input', function(evento){
     }
 })
 
+
+
+
 // Finalizando o pedido
 bntFinalizar.addEventListener('click', () => {
     // Verifica se o restaurante está aberto
@@ -223,51 +228,97 @@ bntFinalizar.addEventListener('click', () => {
 
     // Verifica se o carrinho está vazio
     if (carrinho.length === 0) return;
+   
+  // Se estiver em DELIVERY
+  if (!infoDelivery.classList.contains('hidden')) {
+    let valid = true;
 
-    // Verifica se o endereço está preenchido
-    if (endereco.value === "") {
-        enderecoErro.classList.remove("hidden");
-        endereco.classList.add('border-red-500');
-        return;
-    }
-
-    // Verifica se o nome do endereço está preenchido
     if (endereco_nome.value === "") {
-        enderecoErro.classList.remove('hidden');
         endereco_nome.classList.add('border-red-500');
+        Toastify({ text: "PREENCHA O CAMPO DE NOME", duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "red" }}).showToast();
+        valid = false;
         return;
+    } 
+    if (endereco.value === "") {
+        endereco.classList.add('border-red-500');
+        Toastify({ text: "PREENCHA O CAMPO DE ENDEREÇO", duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "red" }}).showToast();
+        valid = false;
+        return;
+    } 
+
+    if (enderecoNumero.value === "") {
+        endereco.classList.add('border-red-500');
+        Toastify({ text: "PREENCHA O CAMPO DE ENDEREÇO", duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "red" }}).showToast();
+        valid = false;
+        return;
+    } 
+    else {
+        endereco_nome.classList.remove('border-red-500');
     }
 
-    if(enderecoNumero.value === ""){
-        enderecoErro.classList.remove('hidden');
-        enderecoNumero.classList.add("border-red-500");
-        return;
-    
-    }
+    // Verifica outros campos de DELIVERY...
 
-    
+    if (valid) {
+        Toastify({ text: "PEDIDO CONFIRMADO", duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "#4CAF50" }}).showToast();
 
-
-
-
-
-
-
-        // Enviar Via Whatsapp
-        const whatsapp = carrinho.map((item) => {
+        // Enviar Via WhatsApp
+      setTimeout(()=>{  const whatsapp = carrinho.map((item) => {
             return `PEDIDOS: ${item.dataName}\nQUANTIDADE: ${item.quantidade}\nPreço: R$ ${item.dataPrice}\n-------------------------------------------------\n`;
-          }).join("");
-          
-          const msg = encodeURIComponent(`${whatsapp}\n NOME: ${endereco_nome.value}\n ENDEREÇO: ${endereco.value}\n NUMERO: ${enderecoNumero.value}\n PONTO DE REFERENCIA: ${referencia.value}\n VALOR TOTAL: R$ ${totalValor.textContent}`);
-            const phone = "+5511973245437";
-                window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
-                    carrinho.length = 0;
-                        updateModal();
-          
-})
-  
+        }).join("");
+
+        const msg = encodeURIComponent(`${whatsapp}\n NOME: ${endereco_nome.value}\n ENDEREÇO: ${endereco.value}\n NÚMERO: ${enderecoNumero.value}\nPONTO DE REFERÊNCIA: ${referencia.value}\nVALOR TOTAL: R$ ${totalValor.textContent}\n HORA PREVISTA DA ENTREGA : ${horaPrevista()}`);
+        const phone = "+5511973245437";
+        window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
+        carrinho.length = 0; // Limpa o carrinho
+        updateModal(); // Atualiza o modal, se necessário
+    },1000)
+    }
+}
+
+// Se estiver em RETIRADA
+if (!infoRetirada.classList.contains('hidden')) {
+    let valid = true;
+    
+
+    if (endereco_nomeRetirada.value === "") {
+        endereco_nomeRetirada.classList.add('border-red-500');
+        Toastify({ text: "PREENCHA O CAMPO DE NOME", duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "red" }}).showToast();
+        valid = false;
+        return;
+    } else {
+        endereco_nomeRetirada.classList.remove('border-red-500');
+    }
+
+    if (endereco_whatsapp.value === "") {
+        endereco_whatsapp.classList.add('border-red-500');
+        Toastify({ text: "PREENCHA O CAMPO DE WHATSAPP", duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "red" }}).showToast();
+        valid = false;
+        return;
+    } else {
+        endereco_whatsapp.classList.remove('border-red-500');
+    }
+
+    if (valid) {
+        Toastify({ text: "PEDIDO CONFIRMADO", duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "#4CAF50" }}).showToast();
+
+        setTimeout(()=>{  const whatsapp = carrinho.map((item) => {
+            return `PEDIDOS: ${item.dataName}\nQUANTIDADE: ${item.quantidade}\nPreço: R$ ${item.dataPrice}\n-------------------------------------------------\n`;
+        }).join("");
+
+        const msg = encodeURIComponent(`${whatsapp}\nNOME: ${endereco_nomeRetirada.value}\nNÚMERO WHATSAPP: ${endereco_whatsapp.value}\nVALOR TOTAL: R$ ${totalValor.textContent}\n`);
+        const phone = "+5511973245437";
+        window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
+        carrinho.length = 0; // Limpa o carrinho
+        updateModal(); // Atualiza o modal, se necessário
+    },1000)
+
+}}
+});
 
 
+
+
+    
 
                 // FUNÇÃO HORARIO 
 function horarioRestaurante(){
@@ -284,8 +335,20 @@ function horarioRestaurante(){
                             horario.classList.remove('bg-green-600');
                         horario.classList.add('bg-red-600');
                     }
+                // FUNÇÃO CALCULAR TEMPO DE ENTREGA 
+
+                function horaPrevista(){
+            const obterHora = new Date();
+        obterHora.setMinutes(obterHora.getMinutes() + 40); // adicionando 40 minutos de entrega
+    const horaFormatada = `${String(obterHora.getHours()).padStart(2,'0')}:${String(obterHora.getMinutes()).padStart(2,'0')}`
+return horaFormatada;
+     }
 
 
+
+
+
+// FUNÇÃO PRA ABRIR O BOTÃO DE HORARIO
 
                     const panel = document.getElementById('panel');
     const closeButton = document.getElementById('close-button');

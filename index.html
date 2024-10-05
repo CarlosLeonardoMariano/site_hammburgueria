@@ -34,7 +34,7 @@
 </header>
 
 <!--FIM DO HEADER-->
-<div class="bg-white w-[80%] md:w-[600px] h-[400px] leading-5 border-none top-0 left-1/2 fixed p-3 transform -translate-y-full -translate-x-1/2 rounded-lg transition-transform duration-1000 ease-in-out" id="panel">
+<div class="bg-white w-[90%] md:w-[600px] h-[400px] leading-5 border-none top-0 left-1/2 fixed p-3 transform -translate-y-full -translate-x-1/2 rounded-lg transition-transform duration-1000 ease-in-out" id="panel">
 
     <button class="bg-red-500 hover:bg-red-600 p-3 w-full" id="close-button">X</button>
     <h2 class="font-black p-1">Horário de Funcionamento</h2>
@@ -896,8 +896,8 @@ Menu Principal
 
 
 <!--INICIO DO MODAL-->
-<div class="bg-black/60 w-full h-full fixed top-0 left-0 z-[99] hidden justify-center items-center" id="modal">
-    <div class="bg-white p-5 rounded-md min-w-[90%] md:min-w-[690px]">
+<div class="bg-black/60 w-full h-full fixed  top-0 left-0 z-[99] hidden justify-center items-center" id="modal">
+    <div class="bg-white p-5 rounded-md min-w-[89%] md:min-w-[790px]">
 <h2 class="text-center text-2xl font-bold mb-2">Meu Carrinho</h2>
 
 
@@ -907,10 +907,12 @@ Menu Principal
 
 
 
+
                 <!--COMEÇO DA DIV-->
     <div class="flex mt-2 w-full">
-        <button class="w-full border p-3 hover:bg-green-500 hover:text-white" id="btn-delivery">DELIVERY</button>
-        <button class="w-full border p-3 hover:bg-green-500 hover:text-white" id="btn-retirada">RETIRADA</button>
+        <button class="w-full font-semibold border p-3 hover:bg-green-500 hover:text-white" id="btn-pag">FORMAS DE PAGAMENTO</button>
+        <button class="w-full font-semibold  border p-3 hover:bg-green-500 hover:text-white" id="btn-delivery">DELIVERY</button>
+        <button class="w-full font-semibold  border p-3 hover:bg-green-500 hover:text-white" id="btn-retirada">RETIRADA</button>
     </div>
         
     <div class="w-full hidden " id="info-delivery">
@@ -918,7 +920,7 @@ Menu Principal
 <input type="text" placeholder="Digite o seu nome" id="endereco_nome" class="w-full border-2 p-1 rounded my-1 border-x-gray-500"> </p>
 
 <p class="font-medium mt-3"> NOME DA RUA OU AV ?
-<input type="text" placeholder="Digite o nome da rua completo " id="endereco" class="w-full border-2 p-1 rounded my-1  border-x-gray-500"> </p>
+<input type="text" placeholder="Digite o nome da rua completo " id="endereco" class="w-full border-2 p-1 rounded my-1  border-x-gray-500"  > </p>
 
 <p class="font-medium mt-3"> NÚMERO ? 
 <input type="text" placeholder="Digite o numero da Casa ou AP " id="endereco_numero" class="w-full border-2 p-1 rounded my-1  border-x-gray-500"> </p>
@@ -933,7 +935,7 @@ Menu Principal
 
 <div class="w-full hidden " id="info-retirada">
     <p class="font-medium mt-3"> QUAL É SEU NOME ?
-        <input type="text" placeholder="Digite o seu nome" id="endereco_nome" class="w-full border-2 p-1 rounded my-1 border-x-gray-500"> </p>
+        <input type="text" placeholder="Digite o seu nome" id="endereco_nomeRetirada" class="w-full border-2 p-1 rounded my-1 border-x-gray-500"> </p>
 
         <p class="font-medium mt-3"> NÚMERO DO WHATSAPP ? 
         <input type="text" placeholder="Digite o numero do seu whatsapp " id="endereco_whatsapp" class="w-full border-2 p-1 rounded my-1  border-x-gray-500"> </p>
@@ -950,6 +952,33 @@ Menu Principal
 </div>
 
  <!--FINAL DA DIV-->
+
+
+ <!-- Modal de Formas de Pagamento -->
+<div id="modal-pagamento" class="hidden fixed inset-0 bg-black bg-opacity-50 w-full h-full flex items-center justify-center">
+    <div class="bg-white rounded p-5 w-[90%] md:w-[790px]">
+        <h2 class="font-semibold text-lg mb-4 text-center">FORMAS DE PAGAMENTO</h2>
+        <div class="flex flex-col">
+
+            <div class="w-full border-t p-3 ">
+           <button class="p-3 border-2 rounded-md w-4 h-4 mr-40 hover:bg-green-500 hover:text-green-500"></button> <button class="items-center font-semibold">PIX ❖</button>
+        </div>
+
+        <div class="w-full border-t p-3 ">
+            <button class="p-3 border-2 rounded-md w-4 h-4 mr-40 hover:bg-green-500 hover:text-green-500"></button> <button class="mb-2 font-semibold">DEBITO</button>
+         </div>
+
+          <div class="w-full border-t p-3 ">
+            <button class="p-3 border-2 rounded-md w-4 h-4 mr-40 hover:bg-green-500 hover:text-green-500"></button> <button class="mb-2 font-semibold">CREDITO</button>
+
+         </div> <div class="w-full border-t p-3 ">
+            <button class="p-3 border-2 rounded-md w-4 h-4 mr-40 hover:bg-green-500 hover:text-green-500"></button> <button class="mb-2 font-semibold">DINHEIRO</button>
+         </div>
+        </div>
+        <button id="btn-fechar-modal" class="mt-4 bg-red-600 text-white py-1 px-3 rounded">Fechar</button>
+    </div>
+</div>
+
 
 </div>
 </div>
