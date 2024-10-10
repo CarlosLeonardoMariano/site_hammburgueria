@@ -897,7 +897,7 @@ Menu Principal
 
 <!--INICIO DO MODAL-->
 <div class="bg-black/60 w-full h-full fixed  top-0 left-0 z-[99] hidden justify-center items-center" id="modal">
-    <div class="bg-white p-5 rounded-md min-w-[89%] md:min-w-[790px]">
+    <div class="bg-white p-5 rounded-md min-w-[89%] md:min-w-[790px] md: min-h-[200px]">
 <h2 class="text-center text-2xl font-bold mb-2">Meu Carrinho</h2>
 
 
@@ -931,6 +931,8 @@ Menu Principal
 </div>
 
 
+
+
                         <!--PARTE DA RETIRADA-->
 
 <div class="w-full hidden " id="info-retirada">
@@ -955,27 +957,38 @@ Menu Principal
 
 
  <!-- Modal de Formas de Pagamento -->
-<div id="modal-pagamento" class="hidden fixed inset-0 bg-black bg-opacity-50 w-full h-full flex items-center justify-center">
-    <div class="bg-white rounded p-5 w-[90%] md:w-[790px]">
-        <h2 class="font-semibold text-lg mb-4 text-center">FORMAS DE PAGAMENTO</h2>
+
+<div id="modal-pagamento" class="hidden fixed inset-0 bg-black bg-opacity-50 w-full h-full items-center justify-center">
+    <div class="bg-white rounded p-5 w-[90%] md:w-[820px]">
+        <h2 class="p-3 text-center font-black w-full">FORMAS DE PAGAMENTO</h2>
         <div class="flex flex-col">
-
             <div class="w-full border-t p-3 ">
-           <button class="p-3 border-2 rounded-md w-4 h-4 mr-40 hover:bg-green-500 hover:text-green-500"></button> <button class="items-center font-semibold">PIX ❖</button>
+           <button class="payment-button p-3 w-full border-2 border-gray-300 rounded-md  h-full mr-40 hover:bg-green-500 hover:text-white" id="btn-pix" data-payment="PIX">PIX ❖</button>
+
         </div>
 
-        <div class="w-full border-t p-3 ">
-            <button class="p-3 border-2 rounded-md w-4 h-4 mr-40 hover:bg-green-500 hover:text-green-500"></button> <button class="mb-2 font-semibold">DEBITO</button>
+        <div class="w-full p-3 ">
+            <button class="payment-button p-3 w-full border-2 border-gray-300 rounded-md  h-full mr-40 hover:bg-green-500 hover:text-white" id="btn-debito" data-payment="DEBITO">DEBITO</button>
+
          </div>
 
-          <div class="w-full border-t p-3 ">
-            <button class="p-3 border-2 rounded-md w-4 h-4 mr-40 hover:bg-green-500 hover:text-green-500"></button> <button class="mb-2 font-semibold">CREDITO</button>
+          <div class="w-full  p-3 ">
+            <button class="payment-button p-3 w-full border-2 border-gray-300 rounded-md  h-full mr-40 hover:bg-green-500 hover:text-white" id="btn-credito" data-payment="CREDITO">CREDITO</button>
 
-         </div> <div class="w-full border-t p-3 ">
-            <button class="p-3 border-2 rounded-md w-4 h-4 mr-40 hover:bg-green-500 hover:text-green-500"></button> <button class="mb-2 font-semibold">DINHEIRO</button>
          </div>
+         
+         <div class="w-full p-3 ">
+            <button class="payment-button p-3 w-full border-2 border-gray-300 rounded-md  h-full mr-40 hover:bg-green-500 hover:text-white" id="btn-dinheiro" data-payment="DINHEIRO">DINHEIRO</button>
+            <div id="troco_input" class="hidden p-3">
+                <p class="font-medium">TROCO PARA ?</p>
+                <input type="text" placeholder="0,00" id="valor_troco" class="w-full border-2 p-1 rounded my-1 border-x-gray-500">
+            </div>
+            
+
+         </div>
+         
         </div>
-        <button id="btn-fechar-modal" class="mt-4 bg-red-600 text-white py-1 px-3 rounded">Fechar</button>
+        <button id="btn-fechar-pagamentos" class="mt-4 bg-red-600 text-white py-1 px-3 rounded">Fechar</button>
     </div>
 </div>
 

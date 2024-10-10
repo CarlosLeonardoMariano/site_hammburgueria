@@ -18,6 +18,17 @@ const infoDelivery = document.getElementById("info-delivery")
 const infoRetirada = document.getElementById("info-retirada")
 const endereco_whatsapp = document.getElementById('endereco_whatsapp')
 const endereco_nomeRetirada = document.getElementById('endereco_nomeRetirada')
+const btnDinheiro = document.getElementById("btn-dinheiro")
+const btnTroco = document.getElementById("btn-troco")
+const input_troco = document.getElementById('input_troco')
+const btn_formasdePagamentos = document.getElementById('btn-formasdePagamentos');
+const modal_Pagamento = document.getElementById('modal-pagamento');
+const openModal = document.getElementById('btn-pag');
+const btnFecharPagamentos = document.getElementById('btn-fechar-pagamentos')
+const troco_input = document.getElementById('troco_input')
+const btn_abrir_pagamentos = document.getElementById('btn_abrir_pagamentos')
+
+const paymentButton = document.querySelectorAll('.payment-button')
 
 let carrinho = []
 
@@ -238,35 +249,45 @@ bntFinalizar.addEventListener('click', () => {
         Toastify({ text: "PREENCHA O CAMPO DE NOME", duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "red" }}).showToast();
         valid = false;
         return;
-    } 
+    }
+     else {
+        endereco_nome.classList.remove('border-red-500');
+    }
+
     if (endereco.value === "") {
         endereco.classList.add('border-red-500');
         Toastify({ text: "PREENCHA O CAMPO DE ENDEREÇO", duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "red" }}).showToast();
         valid = false;
         return;
-    } 
+    }  else {
+        endereco.classList.remove('border-red-500');
+    }
+
+    
+
 
     if (enderecoNumero.value === "") {
-        endereco.classList.add('border-red-500');
-        Toastify({ text: "PREENCHA O CAMPO DE ENDEREÇO", duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "red" }}).showToast();
+        enderecoNumero.classList.add('border-red-500');
+        Toastify({ text: "PREENCHA O CAMPO DE NUMERO", duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "red" }}).showToast();
         valid = false;
         return;
     } 
-    else {
-        endereco_nome.classList.remove('border-red-500');
+    else{
+        enderecoNumero.classList.remove('border-red-500');
     }
+   
 
     // Verifica outros campos de DELIVERY...
 
     if (valid) {
-        Toastify({ text: "PEDIDO CONFIRMADO", duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "#4CAF50" }}).showToast();
+        Toastify({ text: "PEDIDO CONFIRMADO", duration: 1000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "#4CAF50" }}).showToast();
 
         // Enviar Via WhatsApp
       setTimeout(()=>{  const whatsapp = carrinho.map((item) => {
             return `PEDIDOS: ${item.dataName}\nQUANTIDADE: ${item.quantidade}\nPreço: R$ ${item.dataPrice}\n-------------------------------------------------\n`;
         }).join("");
 
-        const msg = encodeURIComponent(`${whatsapp}\n NOME: ${endereco_nome.value}\n ENDEREÇO: ${endereco.value}\n NÚMERO: ${enderecoNumero.value}\nPONTO DE REFERÊNCIA: ${referencia.value}\nVALOR TOTAL: R$ ${totalValor.textContent}\n HORA PREVISTA DA ENTREGA : ${horaPrevista()}`);
+        const msg = encodeURIComponent(`${whatsapp}\n NOME: ${endereco_nome.value}\n ENDEREÇO: ${endereco.value}\n NÚMERO: ${enderecoNumero.value}\n Forma de Pagamento: ${pagamentoMetodo} \nPONTO DE REFERÊNCIA: ${referencia.value}\nVALOR TOTAL: R$ ${totalValor.textContent}\n HORA PREVISTA DA ENTREGA : ${horaPrevista()}`);
         const phone = "+5511973245437";
         window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
         carrinho.length = 0; // Limpa o carrinho
@@ -274,7 +295,6 @@ bntFinalizar.addEventListener('click', () => {
     },1000)
     }
 }
-
 // Se estiver em RETIRADA
 if (!infoRetirada.classList.contains('hidden')) {
     let valid = true;
@@ -305,6 +325,7 @@ if (!infoRetirada.classList.contains('hidden')) {
             return `PEDIDOS: ${item.dataName}\nQUANTIDADE: ${item.quantidade}\nPreço: R$ ${item.dataPrice}\n-------------------------------------------------\n`;
         }).join("");
 
+         // Adiciona a forma de pagamento à mensagem
         const msg = encodeURIComponent(`${whatsapp}\nNOME: ${endereco_nomeRetirada.value}\nNÚMERO WHATSAPP: ${endereco_whatsapp.value}\nVALOR TOTAL: R$ ${totalValor.textContent}\n`);
         const phone = "+5511973245437";
         window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
@@ -387,3 +408,50 @@ btnRetirada.addEventListener('click', ()=> {
         infoRetirada.classList.add('hidden')
     }
 })
+
+
+
+
+// MODAL DE PAGAMENTOS
+openModal.addEventListener('click',()=>{
+    modal_Pagamento.style.display = 'flex'
+})
+// FECHAR MODAL DE PAGAMENTOS
+btnFecharPagamentos.addEventListener('click', function(){
+    modal_Pagamento.style.display = 'none'
+})
+
+// FECHAR MODAL DE PAGAMENTOS CLICANDO EM QUALQUER PARTE DA TELA
+
+   modal_Pagamento.addEventListener('click', function(evento){
+    if(evento.target === modal_Pagamento){
+        modal_Pagamento.style.display = 'none'
+    }
+   })
+
+
+      // Adicionando eventos de clique para os botões de pagamento
+      let pagamentoMetodo = ''; // Variável global
+
+      
+      paymentButton.forEach(button => {
+          button.addEventListener('click', function() {
+              pagamentoMetodo = button.getAttribute('data-payment');
+      
+              // Mostrar ou esconder o input de troco
+              if (pagamentoMetodo === 'DINHEIRO') {
+                  troco_input.classList.toggle('hidden');
+                  // Não fecha o modal aqui
+              } else {
+                  troco_input.classList.add('hidden');
+                  modal_Pagamento.style.display = 'none'; // Fecha o modal apenas se não for DINHEIRO
+                  document.getElementById('modal').style.display = 'flex'; // Mostra o modal principal
+              }
+          });
+      
+          paymentButton.forEach(btn => btn.classList.remove('selected'));
+          button.classList.add('selected');
+      });
+      
+      
+
