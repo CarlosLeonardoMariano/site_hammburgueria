@@ -27,7 +27,8 @@ const openModal = document.getElementById('btn-pag');
 const btnFecharPagamentos = document.getElementById('btn-fechar-pagamentos')
 const troco_input = document.getElementById('troco_input')
 const btn_abrir_pagamentos = document.getElementById('btn_abrir_pagamentos')
-
+const btn_confirmar_dinheiro = document.getElementById('btn_confirmar_dinheiro')
+const valor_troco = document.getElementById('valor_troco')
 const paymentButton = document.querySelectorAll('.payment-button')
 
 let carrinho = []
@@ -132,6 +133,7 @@ function updateModal() {
 
     // Exibir total formatado
     totalValor.textContent = total.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+
 
     // Adicionando evento de clique para remover item
     const removeButtons = document.querySelectorAll('.remove_btn');
@@ -437,15 +439,18 @@ btnFecharPagamentos.addEventListener('click', function(){
       paymentButton.forEach(button => {
           button.addEventListener('click', function() {
               pagamentoMetodo = button.getAttribute('data-payment');
+
       
               // Mostrar ou esconder o input de troco
-              if (pagamentoMetodo === 'DINHEIRO') {
-                  troco_input.classList.toggle('hidden');
+              if (pagamentoMetodo !== 'DINHEIRO') {
                   // Não fecha o modal aqui
-              } else {
-                  troco_input.classList.add('hidden');
-                  modal_Pagamento.style.display = 'none'; // Fecha o modal apenas se não for DINHEIRO
+                  Toastify({ text:`Forma de Pagamento ${pagamentoMetodo} !`, duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "green" }}).showToast();
+
+                  modal_Pagamento.style.display = 'none'
                   document.getElementById('modal').style.display = 'flex'; // Mostra o modal principal
+
+              } else {
+                  troco_input.classList.toggle('hidden');
               }
           });
       
@@ -454,4 +459,20 @@ btnFecharPagamentos.addEventListener('click', function(){
       });
       
       
+
+      btn_confirmar_dinheiro.addEventListener('click', function(){
+
+        modal_Pagamento.style.display = 'none'
+        document.getElementById('modal').style.display = 'flex'
+
+        if(pagamentoMetodo === 'DINHEIRO'){
+            Toastify({ text:`Forma de Pagamento Dinheiro !`, duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "green" }}).showToast();
+
+        }
+
+        
+        
+    })
+
+
 
