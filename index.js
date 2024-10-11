@@ -300,7 +300,7 @@ bntFinalizar.addEventListener('click', () => {
             return `PEDIDOS: ${item.dataName}\nQUANTIDADE: ${item.quantidade}\nPreço: R$ ${item.dataPrice}\n-------------------------------------------------\n`;
         }).join("");
 
-        const msg = encodeURIComponent(`${whatsapp}\n Nome: ${endereco_nome.value}\n Endereço: ${endereco.value}\n Número: ${enderecoNumero.value}\nPonto de referencia: ${referencia.value}\nValor Total: R$ ${totalValor.textContent}\nForma de Pagamento: ${pagamentoMetodo}\n Troco Para?  R$${input_troco.value}\nHora Prevista da Entrega: ${horaPrevista()}`);
+        const msg = encodeURIComponent(`${whatsapp}\nNome: ${endereco_nome.value}\nEndereço: ${endereco.value}\nNúmero: ${enderecoNumero.value}\nPonto de referencia: ${referencia.value}\nValor Total: R$ ${totalValor.textContent}\nForma de Pagamento: ${pagamentoMetodo}\nTroco Para?  R$${input_troco.value}\nHora Prevista da Entrega: ${horaPrevista()}`);
         const phone = "+5511973245437";
         window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
         carrinho.length = 0; // Limpa o carrinho
@@ -349,7 +349,7 @@ if (!infoRetirada.classList.contains('hidden')) {
         }).join("");
 
          // Adiciona a forma de pagamento à mensagem
-        const msg = encodeURIComponent(`${whatsapp}\nNome: ${endereco_nomeRetirada.value}\nNúmero Whatsapp: ${endereco_whatsapp.value}\nValor Total: ${totalValor.textContent}\nForma de Pagamento: ${pagamentoMetodo}\n Troco Para?  R$${input_troco.value}\n Hora Prevista Para Retirada: ${horaRetirada()}`);
+        const msg = encodeURIComponent(`${whatsapp}\nNome: ${endereco_nomeRetirada.value}\nNúmero Whatsapp: ${endereco_whatsapp.value}\nValor Total: ${totalValor.textContent}\nForma de Pagamento: ${pagamentoMetodo}\nTroco Para?  R$${input_troco.value}\nHora Prevista Para Retirada: ${horaRetirada()}`);
         const phone = "+5511973245437";
         window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
         carrinho.length = 0; // Limpa o carrinho
