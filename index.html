@@ -34,16 +34,16 @@
 </header>
 
 <!--FIM DO HEADER-->
-<div class="bg-white w-[90%] md:w-[600px] h-[400px] leading-5 border-none top-0 left-1/2 fixed p-3 transform -translate-y-full -translate-x-1/2 rounded-lg transition-transform duration-1000 ease-in-out" id="panel">
+<div class="bg-white w-[95%] md:w-[600px] h-[400px] leading-5 border-none top-0 left-1/2 fixed p-3 transform -translate-y-full -translate-x-1/2 rounded-lg transition-transform duration-1000 ease-in-out" id="panel">
 
     <button class="bg-red-500 hover:bg-red-600 p-3 w-full" id="close-button">X</button>
     <h2 class="font-black p-1">Horário de Funcionamento</h2>
     <p class="border-t-2 border-black flex justify-between items-center font-medium p-1">TERÇA-FEIRA <span class="flex justify-between items-center font-medium p-3">18:00 - 23:00</span></p>
     <p class="border-t-2 border-black flex justify-between items-center font-medium p-1">QUARTA-FEIRA <span class="flex justify-between items-center font-medium p-3">18:00 - 23:00</span></p>
     <p class="border-t-2 border-black flex justify-between items-center font-medium p-1">QUINTA-FEIRA <span class="flex justify-between items-center font-medium p-3">18:00 - 23:00</span></p>
-    <p class="border-t-2 border-black flex justify-between items-center font-medium p-1">SEXTA-FEIRA <span class="flex justify-between items-center font-medium p-3">18:00 - 23:00</span></p>
-    <p class="border-t-2 border-black flex justify-between items-center font-medium p-1">SÁBADO <span class="flex justify-between items-center font-medium p-3">18:00 - 23:00</span></p>
-    <p class="border-t-2 border-black flex justify-between items-center font-medium p-1">DOMINGO <span class="flex justify-between items-center font-medium p-3">18:00 - 23:00</span></p>
+    <p class="border-t-2 border-black flex justify-between items-center font-medium p-1">SEXTA-FEIRA <span class="flex justify-between items-center font-medium p-3">18:00 - 00:00</span></p>
+    <p class="border-t-2 border-black flex justify-between items-center font-medium p-1">SÁBADO <span class="flex justify-between items-center font-medium p-3">18:00 - 00:00</span></p>
+    <p class="border-t-2 border-black flex justify-between items-center font-medium p-1">DOMINGO <span class="flex justify-between items-center font-medium p-3">18:00 - 00:00</span></p>
 </div>
 
 
@@ -949,8 +949,8 @@ Menu Principal
                        <!--FINAL DA PARTE DA RETIRADA-->
 
 <div class="flex itens-center justify-between mt-5 w-full">
-<button id="btn-model-fechar" class="bg-red-600 text-white py-1 px-4 rounded ">Fechar</button>
-<button id="bnt-finalizar" class="bg-green-500 text-white py-1 px-4 rounded">Finalizar Pedido</button>
+<button id="btn-model-fechar" class="bg-red-600 w-[49%] text-white p-3 rounded ">Fechar</button>
+<button id="bnt-finalizar" class="bg-green-500 w-[49%] text-white p-3  rounded">Finalizar Pedido</button>
 </div>
 
  <!--FINAL DA DIV-->
@@ -980,16 +980,22 @@ Menu Principal
          <div class="w-full p-3 ">
             <button class="payment-button p-3 w-full border-2 border-gray-300 rounded-md  h-full mr-40 hover:bg-green-500 hover:text-white" id="btn-dinheiro" data-payment="DINHEIRO">DINHEIRO</button>
             <div id="troco_input" class="hidden p-3">
-                <p class="font-medium">TROCO PARA ?</p>
-                <input type="text" placeholder="0,00" id="valor_troco" class="w-full border-2 p-1 rounded my-1 border-x-gray-500">
-                <button class="w-full bg-green-700 text-white p-2" id="btn_confirmar_dinheiro">Confirmar</button>
+                <p class="font-medium" id="">TROCO PARA ?</p>
+                <input type="text" placeholder="0,00" id="input_troco" class="w-full border-2 rounded-sm p-2 my-1 border-x-gray-500">
+                <button id="btn-troco" class="w-full bg-green-700 text-white p-2 mb-5">Calcular Troco</button>
+                <p id="valor_troco"></p>
+                <button class=" bg-green-700 text-white p-3 w-full rounded-sm" id="btn_confirmar_dinheiro">Confirmar</button>
+
+
             </div>
             
 
          </div>
          
         </div>
-        <button id="btn-fechar-pagamentos" class="mt-4 bg-red-600 text-white py-1 px-3 rounded">Fechar</button>
+        <div class="justify-between flex">
+        <button id="btn-fechar-pagamentos" class=" bg-red-600 w-full rounded-md text-white p-4 ">Fechar</button>
+    </div>
     </div>
 </div>
 

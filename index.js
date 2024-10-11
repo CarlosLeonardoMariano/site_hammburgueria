@@ -289,7 +289,7 @@ bntFinalizar.addEventListener('click', () => {
             return `PEDIDOS: ${item.dataName}\nQUANTIDADE: ${item.quantidade}\nPreço: R$ ${item.dataPrice}\n-------------------------------------------------\n`;
         }).join("");
 
-        const msg = encodeURIComponent(`${whatsapp}\n NOME: ${endereco_nome.value}\n ENDEREÇO: ${endereco.value}\n NÚMERO: ${enderecoNumero.value}\n Forma de Pagamento: ${pagamentoMetodo} \nPONTO DE REFERÊNCIA: ${referencia.value}\nVALOR TOTAL: R$ ${totalValor.textContent}\n HORA PREVISTA DA ENTREGA : ${horaPrevista()}`);
+        const msg = encodeURIComponent(`${whatsapp}\n NOME: ${endereco_nome.value}\n ENDEREÇO: ${endereco.value}\n NÚMERO: ${enderecoNumero.value}\nPONTO DE REFERÊNCIA: ${referencia.value}\nVALOR TOTAL: R$ ${totalValor.textContent}\nForma de Pagamento: ${pagamentoMetodo}\n Troco: ${valor_troco}\nHORA PREVISTA DA ENTREGA : ${horaPrevista()}`);
         const phone = "+5511973245437";
         window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
         carrinho.length = 0; // Limpa o carrinho
@@ -343,21 +343,43 @@ if (!infoRetirada.classList.contains('hidden')) {
 
     
 
-                // FUNÇÃO HORARIO 
-function horarioRestaurante(){
+function horarioRestaurante() {
     const data = new Date();
-        const hora = data.getHours();
-            return hora >= 1 && hora < 24;  // verdadeiro se estiver aberto
+    const hora = data.getHours();
+    const dia = data.getDay();
+    let aberto = false;
+
+    switch(dia) {
+        case 0: // Domingo
+        case 4: // Quinta
+        case 5: // Sexta
+        case 6: // Sábado
+            aberto = hora >= 1 && hora < 24;
+            break;
+
+        case 2: // Terça
+        case 3: // Quarta
+            aberto = hora >= 1 && hora < 23;
+            break;
+
+        default:
+            Toastify({ text: `RESTAURANTE FECHADO!`, duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "green" }}).showToast();
+    }
+
+    return aberto; // Retorne o valor de 'aberto'
 }
 
-                const horario_Aberto = horarioRestaurante();
-                    if (horario_Aberto) {
-                        horario.classList.remove('bg-red-600');
-                            horario.classList.add('bg-green-600');
-                                } else {
-                            horario.classList.remove('bg-green-600');
-                        horario.classList.add('bg-red-600');
-                    }
+    const horario_Aberto = horarioRestaurante();
+        if (horario_Aberto) {
+            horario.classList.remove('bg-red-600');
+                horario.classList.add('bg-green-600');
+                    } else {
+                horario.classList.remove('bg-green-600');
+            horario.classList.add('bg-red-600');
+        }
+
+
+
                 // FUNÇÃO CALCULAR TEMPO DE ENTREGA 
 
                 function horaPrevista(){
@@ -465,14 +487,46 @@ btnFecharPagamentos.addEventListener('click', function(){
         modal_Pagamento.style.display = 'none'
         document.getElementById('modal').style.display = 'flex'
 
+
         if(pagamentoMetodo === 'DINHEIRO'){
             Toastify({ text:`Forma de Pagamento Dinheiro !`, duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "green" }}).showToast();
-
+             valor_troco.innerHTML = '';
         }
+   
 
         
-        
-    })
+})
 
+
+btnTroco.addEventListener('click', () => {
+    const total = parseFloat(totalValor.textContent.replace("R$", "").replace(",", ".").trim());
+    const trocoValor = parseFloat(input_troco.value);
+
+    if (!isNaN(trocoValor) && trocoValor >= total) {
+        const troco = trocoValor - total;
+        valor_troco.textContent = `Troco: R$ ${troco.toFixed(2)}`;
+
+        Toastify({
+            text: `Troco calculado: R$ ${troco.toFixed(2)}`,
+            duration: 3000,
+            close: true,
+            gravity: "top",
+            position: "right",
+            stopOnFocus: true,
+            style: { background: "#4CAF50" },
+        }).showToast();
+    } else {
+        valor_troco.textContent = 'Valor insuficiente!';
+        Toastify({
+            text: "Valor insuficiente para o troco!",
+            duration: 3000,
+            close: true,
+            gravity: "top",
+            position: "right",
+            stopOnFocus: true,
+            style: { background: "#ef4444" },
+        }).showToast();
+    }
+});
 
 
