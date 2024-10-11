@@ -28,7 +28,7 @@ const btnFecharPagamentos = document.getElementById('btn-fechar-pagamentos')
 const troco_input = document.getElementById('troco_input')
 const btn_abrir_pagamentos = document.getElementById('btn_abrir_pagamentos')
 const btn_confirmar_dinheiro = document.getElementById('btn_confirmar_dinheiro')
-const valor_troco = document.getElementById('valor_troco')
+const valorTroco = document.getElementById('valor_troco');
 const paymentButton = document.querySelectorAll('.payment-button')
 
 let carrinho = []
@@ -238,10 +238,12 @@ bntFinalizar.addEventListener('click', () => {
         }).showToast();
         return;
     }
+    
 
     // Verifica se o carrinho está vazio
     if (carrinho.length === 0) return;
    
+    
   // Se estiver em DELIVERY
   if (!infoDelivery.classList.contains('hidden')) {
     let valid = true;
@@ -277,25 +279,36 @@ bntFinalizar.addEventListener('click', () => {
     else{
         enderecoNumero.classList.remove('border-red-500');
     }
-   
+
+
 
     // Verifica outros campos de DELIVERY...
+    if (!pagamentoMetodo) {
+        Toastify({ text: "SELECIONE A FORMA DE PAGAMENTO", duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "red" }}).showToast();
+        valid = false;
+    }
 
     if (valid) {
         Toastify({ text: "PEDIDO CONFIRMADO", duration: 1000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "#4CAF50" }}).showToast();
 
+
+    if (valid) {
+
+        
         // Enviar Via WhatsApp
       setTimeout(()=>{  const whatsapp = carrinho.map((item) => {
             return `PEDIDOS: ${item.dataName}\nQUANTIDADE: ${item.quantidade}\nPreço: R$ ${item.dataPrice}\n-------------------------------------------------\n`;
         }).join("");
 
-        const msg = encodeURIComponent(`${whatsapp}\n NOME: ${endereco_nome.value}\n ENDEREÇO: ${endereco.value}\n NÚMERO: ${enderecoNumero.value}\nPONTO DE REFERÊNCIA: ${referencia.value}\nVALOR TOTAL: R$ ${totalValor.textContent}\nForma de Pagamento: ${pagamentoMetodo}\n Troco: ${valor_troco}\nHORA PREVISTA DA ENTREGA : ${horaPrevista()}`);
+        const msg = encodeURIComponent(`${whatsapp}\n Nome: ${endereco_nome.value}\n Endereço: ${endereco.value}\n Número: ${enderecoNumero.value}\nPonto de referencia: ${referencia.value}\nValor Total: R$ ${totalValor.textContent}\nForma de Pagamento: ${pagamentoMetodo}\n Troco Para?  R$${input_troco.value}\nHora Prevista da Entrega: ${horaPrevista()}`);
         const phone = "+5511973245437";
         window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
         carrinho.length = 0; // Limpa o carrinho
+        input_troco.value = ""
+        valorTroco.innerHTML = ""
         updateModal(); // Atualiza o modal, se necessário
     },1000)
-    }
+    }}
 }
 // Se estiver em RETIRADA
 if (!infoRetirada.classList.contains('hidden')) {
@@ -320,22 +333,32 @@ if (!infoRetirada.classList.contains('hidden')) {
         endereco_whatsapp.classList.remove('border-red-500');
     }
 
+    // FAZENDO O CLIENTE COLOCAR A FORMA DE PAGAMENTO NA PARTE DE RETIRADA
+    if(!pagamentoMetodo){
+        Toastify({ text: "SELECIONE A FORMA DE PAGAMENTO", duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "red" }}).showToast();
+        valid = false;
+    }
+
     if (valid) {
         Toastify({ text: "PEDIDO CONFIRMADO", duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "#4CAF50" }}).showToast();
+
+    if (valid) {
 
         setTimeout(()=>{  const whatsapp = carrinho.map((item) => {
             return `PEDIDOS: ${item.dataName}\nQUANTIDADE: ${item.quantidade}\nPreço: R$ ${item.dataPrice}\n-------------------------------------------------\n`;
         }).join("");
 
          // Adiciona a forma de pagamento à mensagem
-        const msg = encodeURIComponent(`${whatsapp}\nNOME: ${endereco_nomeRetirada.value}\nNÚMERO WHATSAPP: ${endereco_whatsapp.value}\nVALOR TOTAL: R$ ${totalValor.textContent}\n`);
+        const msg = encodeURIComponent(`${whatsapp}\nNome: ${endereco_nomeRetirada.value}\nNúmero Whatsapp: ${endereco_whatsapp.value}\nValor Total: ${totalValor.textContent}\nForma de Pagamento: ${pagamentoMetodo}\n Troco Para?  R$${input_troco.value}\n Hora Prevista Para Retirada: ${horaRetirada()}`);
         const phone = "+5511973245437";
         window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
         carrinho.length = 0; // Limpa o carrinho
         updateModal(); // Atualiza o modal, se necessário
+        input_troco.value = ""
+        valorTroco.innerHTML = ""
     },1000)
 
-}}
+}}}
 });
 
 
@@ -389,6 +412,13 @@ function horarioRestaurante() {
 return horaFormatada;
      }
 
+
+     function horaRetirada(){
+        const obterHora = new Date()
+        obterHora.setMinutes(obterHora.getMinutes()+20);
+        const horaFormatada = `${String(obterHora.getHours()).padStart(2,'0')}:${String(obterHora.getMinutes()).padStart(2,'0')}`
+ return horaFormatada;       
+     }
 
 
 
@@ -462,7 +492,8 @@ btnFecharPagamentos.addEventListener('click', function(){
           button.addEventListener('click', function() {
               pagamentoMetodo = button.getAttribute('data-payment');
 
-      
+    
+
               // Mostrar ou esconder o input de troco
               if (pagamentoMetodo !== 'DINHEIRO') {
                   // Não fecha o modal aqui
@@ -470,6 +501,7 @@ btnFecharPagamentos.addEventListener('click', function(){
 
                   modal_Pagamento.style.display = 'none'
                   document.getElementById('modal').style.display = 'flex'; // Mostra o modal principal
+                 
 
               } else {
                   troco_input.classList.toggle('hidden');
@@ -480,22 +512,38 @@ btnFecharPagamentos.addEventListener('click', function(){
           button.classList.add('selected');
       });
       
+
       
-
-      btn_confirmar_dinheiro.addEventListener('click', function(){
-
-        modal_Pagamento.style.display = 'none'
-        document.getElementById('modal').style.display = 'flex'
-
-
-        if(pagamentoMetodo === 'DINHEIRO'){
-            Toastify({ text:`Forma de Pagamento Dinheiro !`, duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "green" }}).showToast();
-             valor_troco.innerHTML = '';
-        }
-   
-
+     
+    
+      btn_confirmar_dinheiro.addEventListener('click', function() {
+        // Obtém o valor total do pedido
+        const total = parseFloat(totalValor.textContent.replace("R$", "").replace(",", ".").trim());
         
-})
+        // Obtém o valor do troco do input
+        const trocoValor = parseFloat(input_troco.value.replace(",", ".").trim());
+    
+        // Verifica se a forma de pagamento é dinheiro
+        if (pagamentoMetodo === 'DINHEIRO') {
+            // Se o troco for menor que o total, mostre um alerta e não finalize
+            if (trocoValor < total) {
+                alert('O troco não pode ser menor que o total do seu pedido.');
+                return; // Não continua
+            }
+    
+            // Esconde o modal de pagamento e mostra o próximo modal
+            modal_Pagamento.style.display = 'none';
+            document.getElementById('modal').style.display = 'flex';
+    
+            Toastify({ text: `Forma de Pagamento: Dinheiro!`, duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "green" }}).showToast();
+    
+            // Calcula o troco e exibe
+            const troco = trocoValor - total;
+        }
+    });
+    
+        
+    
 
 
 btnTroco.addEventListener('click', () => {
@@ -504,11 +552,11 @@ btnTroco.addEventListener('click', () => {
 
     if (!isNaN(trocoValor) && trocoValor >= total) {
         const troco = trocoValor - total;
-        valor_troco.textContent = `Troco: R$ ${troco.toFixed(2)}`;
+        valorTroco.textContent = `Seu Troco será: R$ ${troco.toFixed(2)}`;
 
         Toastify({
-            text: `Troco calculado: R$ ${troco.toFixed(2)}`,
-            duration: 3000,
+            text: `Seu Troco será: R$ ${troco.toFixed(2)}`,
+            duration: 2000,
             close: true,
             gravity: "top",
             position: "right",
@@ -516,7 +564,7 @@ btnTroco.addEventListener('click', () => {
             style: { background: "#4CAF50" },
         }).showToast();
     } else {
-        valor_troco.textContent = 'Valor insuficiente!';
+        valorTroco.textContent = 'Valor insuficiente!';
         Toastify({
             text: "Valor insuficiente para o troco!",
             duration: 3000,
