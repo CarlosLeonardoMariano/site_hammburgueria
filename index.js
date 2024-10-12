@@ -29,7 +29,10 @@ const troco_input = document.getElementById('troco_input')
 const btn_abrir_pagamentos = document.getElementById('btn_abrir_pagamentos')
 const btn_confirmar_dinheiro = document.getElementById('btn_confirmar_dinheiro')
 const valorTroco = document.getElementById('valor_troco');
+const bairro = document.getElementById('bairro');
 const paymentButton = document.querySelectorAll('.payment-button')
+
+
 
 let carrinho = []
 

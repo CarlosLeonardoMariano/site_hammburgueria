@@ -33,6 +33,9 @@ footer {
     overflow-y: auto;
 }
 
+
+
+
 /* Estilo para dispositivos móveis */
 @media (max-width: 600px) { /* Ajuste a largura conforme necessário */
     .modal-conteudo {
