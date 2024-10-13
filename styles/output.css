@@ -683,10 +683,6 @@ video {
   top: 0px;
 }
 
-.top-2 {
-  top: 0.5rem;
-}
-
 .isolate {
   isolation: isolate;
 }
@@ -766,6 +762,10 @@ video {
   margin-bottom: 0.25rem;
 }
 
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
+
 .mb-16 {
   margin-bottom: 4rem;
 }
@@ -804,6 +804,10 @@ video {
 
 .mt-3 {
   margin-top: 0.75rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
 }
 
 .mt-5 {
@@ -925,6 +929,10 @@ video {
   height: 1.5rem;
 }
 
+.h-7 {
+  height: 1.75rem;
+}
+
 .h-8 {
   height: 2rem;
 }
@@ -935,6 +943,10 @@ video {
 
 .h-\[420px\] {
   height: 420px;
+}
+
+.h-\[90\%\] {
+  height: 90%;
 }
 
 .h-full {
@@ -959,6 +971,10 @@ video {
 
 .w-6 {
   width: 1.5rem;
+}
+
+.w-7 {
+  width: 1.75rem;
 }
 
 .w-8 {
@@ -993,8 +1009,8 @@ video {
   width: 100%;
 }
 
-.min-w-\[89\%\] {
-  min-width: 89%;
+.min-w-\[90\%\] {
+  min-width: 90%;
 }
 
 .max-w-7 {
@@ -2092,11 +2108,6 @@ video {
   background-color: rgb(24 24 27 / var(--tw-bg-opacity));
 }
 
-.bg-green-950 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(5 46 22 / var(--tw-bg-opacity));
-}
-
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
 }
@@ -2881,15 +2892,30 @@ footer {
 }
 
 .modal-conteudo {
-  max-height: 200px;
+  max-height: 100%;
   /* ou o tamanho que você preferir */
   overflow-y: auto;
   /* permite rolagem vertical */
 }
 
-.endereço_rolar{
-  max-height: 100px;
+#over{
   overflow-y: auto;
+  max-height: 100%
+}
+
+#modal{
+  overflow-y: auto;
+  max-height: 100%
+}
+
+#info-delivery{
+  overflow-y: auto;
+  max-height: 600px
+}
+
+.btnverde{
+  background-color:#16A34A !important;
+  color:white
 }
 
 /* Estilo para dispositivos móveis */
@@ -3007,24 +3033,12 @@ footer {
 }
 
 @media (min-width: 768px) {
-  .md\:h-full {
-    height: 100%;
-  }
-
-  .md\:h-\[400px\] {
-    height: 400px;
-  }
-
   .md\:h-\[80\%\] {
     height: 80%;
   }
 
-  .md\:w-\[1200px\] {
-    width: 1200px;
-  }
-
-  .md\:w-\[1300px\] {
-    width: 1300px;
+  .md\:h-full {
+    height: 100%;
   }
 
   .md\:w-\[600px\] {
@@ -3035,32 +3049,12 @@ footer {
     width: 820px;
   }
 
-  .md\:w-\[1500px\] {
-    width: 1500px;
-  }
-
   .md\:w-full {
     width: 100%;
   }
 
-  .md\:w-\[500\] {
-    width: 500;
-  }
-
-  .md\:w-\[500px\] {
-    width: 500px;
-  }
-
-  .md\:w-\[100\%\] {
-    width: 100%;
-  }
-
-  .md\:min-w-\[790px\] {
-    min-width: 790px;
-  }
-
-  .md\:min-w-\[890px\] {
-    min-width: 890px;
+  .md\:min-w-\[800px\] {
+    min-width: 800px;
   }
 
   .md\:grid-cols-2 {

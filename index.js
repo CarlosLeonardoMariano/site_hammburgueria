@@ -31,7 +31,8 @@ const btn_confirmar_dinheiro = document.getElementById('btn_confirmar_dinheiro')
 const valorTroco = document.getElementById('valor_troco');
 const bairro = document.getElementById('bairro');
 const paymentButton = document.querySelectorAll('.payment-button')
-
+const taxasDisplay = document.getElementById('taxa')
+const valorTotalTaxa = document.getElementById('valorTotalTaxa')
 
 
 let carrinho = []
@@ -121,7 +122,7 @@ function updateModal() {
                     <p class="font-semibold mt-1 mb-1">R$ ${item.dataPrice.toFixed(2)}</p>
                 </div>
                 <button class="py-1 px-1 border-none bg-red-600 text-white rounded-full justify-center items-center remove_btn" data-name="${item.dataName}">
-                    <img src= './imagens_cardapio/delete_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png'  class="w-8 h-8" >
+                    <img src= './imagens_cardapio/delete_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png'  class="w-7 h-7" >
                 </button>
             </div>`;
 
@@ -281,8 +282,19 @@ bntFinalizar.addEventListener('click', () => {
     } 
     else{
         enderecoNumero.classList.remove('border-red-500');
+        
     }
 
+
+
+   if(bairro.value === ""){
+    bairro.classList.add('border-red-500')
+        Toastify({ text: "SELECIONE O BAIRRO!", duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "red" }}).showToast();
+            valid = false;
+            return;
+   } else {
+    bairro.classList.remove('border-red-500');
+   }
 
 
     // Verifica outros campos de DELIVERY...
@@ -294,16 +306,13 @@ bntFinalizar.addEventListener('click', () => {
     if (valid) {
         Toastify({ text: "PEDIDO CONFIRMADO", duration: 1000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "#4CAF50" }}).showToast();
 
-
     if (valid) {
-
-        
         // Enviar Via WhatsApp
       setTimeout(()=>{  const whatsapp = carrinho.map((item) => {
             return `PEDIDOS: ${item.dataName}\nQUANTIDADE: ${item.quantidade}\nPreço: R$ ${item.dataPrice}\n-------------------------------------------------\n`;
         }).join("");
 
-        const msg = encodeURIComponent(`${whatsapp}\nNome: ${endereco_nome.value}\nEndereço: ${endereco.value}\nNúmero: ${enderecoNumero.value}\nPonto de referencia: ${referencia.value}\nValor Total: R$ ${totalValor.textContent}\nForma de Pagamento: ${pagamentoMetodo}\nTroco Para?  R$${input_troco.value}\nHora Prevista da Entrega: ${horaPrevista()}`);
+        const msg = encodeURIComponent(`${whatsapp}\nNome: ${endereco_nome.value}\nEndereço: ${endereco.value}\nNúmero: ${enderecoNumero.value}\nBairro: ${bairro.value}\n Ponto de referencia: ${referencia.value}\nValor Total: R$ ${valorTotalTaxa.textContent}\nForma de Pagamento: ${pagamentoMetodo}\nTroco Para?  R$:${input_troco.value}\nHora Prevista da Entrega: ${horaPrevista()}`);
         const phone = "+5511973245437";
         window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
         carrinho.length = 0; // Limpa o carrinho
@@ -443,28 +452,34 @@ return horaFormatada;
     });
 
 
-// FUNÇÃO PRA ABRIR O BOTÃO DE DELIVERY
-
-btnDelivery.addEventListener('click', function() {
+// FUNÇÃO PARA ABRIR O MODAL DE DELIVERY
+btnDelivery.addEventListener('click', function() { 
     // Se o infoDelivery estiver escondido, mostre-o e esconda o infoRetirada
     if (infoDelivery.classList.contains('hidden')) {
         infoDelivery.classList.remove('hidden');
         infoRetirada.classList.add('hidden');
+        btnDelivery.classList.add('btnverde');
+        btnRetirada.classList.remove('btnverde');
     } else {
         infoDelivery.classList.add('hidden');
+        // Remove a cor verde ao fechar o modal
+        btnDelivery.classList.remove('btnverde');
     }
 });
 
-// FUNÇÃO PRA ABRIR O BOTÃO DE RETIRADA
-
+// FUNÇÃO PARA ABRIR O MODAL DE RETIRADA
 btnRetirada.addEventListener('click', ()=> {
     if(infoRetirada.classList.contains('hidden')){
-        infoRetirada.classList.remove('hidden')
-        infoDelivery.classList.add('hidden')
-    } else{
-        infoRetirada.classList.add('hidden')
+        infoRetirada.classList.remove('hidden');
+        infoDelivery.classList.add('hidden');
+        btnRetirada.classList.add('btnverde');
+        btnDelivery.classList.remove('btnverde');
+    } else {
+        infoRetirada.classList.add('hidden');
+        // Remove a cor verde ao fechar o modal
+        btnRetirada.classList.remove('btnverde');
     }
-})
+});
 
 
 
@@ -581,3 +596,99 @@ btnTroco.addEventListener('click', () => {
 });
 
 
+
+
+
+ // FUNÇÃO DA TAXA DE ENTREGA 
+const taxas = {
+    "ADAO SILVA": 40.00,
+    "ARPUI": 15.00,
+    "BARROCAO": 40.00,
+    "BATATUBA": 25.00,
+    "BAIRRO DOS MIMIS": 25.00,
+    "PORTAL DAS PEDRAS": 30.00,
+    "BELA VISTA": 5.00,
+    "BELA VISTA 2": 5.00,
+    "BIQUINHA": 5.00,
+    "BOA VISTA": 5.00,
+    "CACHOEIRA ABAIXO": 7.00,
+    "CAPUAVA": 5.00,
+    "CATIGUÁ": 5.00,
+    "CECAP": 6.00,
+    "CENTRO": 5.00,
+    "CONDOMINIO ÁGUAS CLARAS": 30.00,
+    "CONDOMINIO BOA VISTA": 5.00,
+    "CONDOMINIO NAUTICO BRAGANÇA": 40.00,
+    "CONDOMINIO NAUTICO JAGUARI": 30.00,
+    "CONDOMINIO NAUTICO PIRACAIA": 30.00,
+    "CONDOMINIO LARANJEIRAS": 30.00,
+    "CONDOMINIO PANORAMA": 40.00,
+    "CONDOMINIO RIVIERA DO JAGUARI": 30.00,
+    "CONDOMINIO RECANTO DOS PASSAROS": 20.00,
+    "CONDOMINIO ENSEADA DO JACAREI": 30.00,
+    "CRAVORANA": 20.00,
+    "ESTRADA LAMARTINO PEÇANHA(rural)": 7.00,
+    "FAZENDA SANTA MARIA": 30.00,
+    "GIRASSOL": 7.00,
+    "IPE": 6.00,
+    "JARDIM ALVORADA": 5.00,
+    "JARDIM ALVORADA 2": 5.00,
+    "JARDIM PRIMAVEIRA": 5.00,
+    "JARDIM SANTO AFONSO": 5.00,
+    "JARDIM SUDO": 7.00,
+    "JARDIM CLAUDIA": 6.00,
+    "JUNCAL": 6.00,
+    "MARGINAL": 5.00,
+    "MONTE CRISTO": 5.00,
+    "MORRO VERMELHO": 5.00,
+    "NOSSO TETO": 5.00,
+    "NOVA SUIÇA": 6.00,
+    "NOVO HORIZONTE": 30.00,
+    "PARQUE DAS PAINEIRAS": 6.00,
+    "PARQUE DOS PINHEIROS": 7.00,
+    "PEDROSO": 25.00,
+    "PINHAL": 30.00,
+    "POUSO ALEGRE": 7.00,
+    "PRAINHA": 5.00,
+    "RANCHO FORTE": 6.00,
+    "RECANTO DOS MAIAS": 5.00,
+    "ROMITE 1": 25.00,
+    "ROMITE 2": 25.00,
+    "ROMITE 3": 25.00,
+    "SAN MARINO": 7.00,
+    "SANTA FÉ": 30.00,
+    "SANTA FÉ 2": 40.00,
+    "SANTO ANTONIO DA CACHOEIRA": 5.00,
+    "SANTOS REIS": 7.00,
+    "SÃO BRAS": 25.00,
+    "VALE DO ATIBAIA 1": 30.00,
+    "VALE DO ATIBAIA 2": 30.00,
+    "VALE DO CACHOEIRA": 10.00,
+    "VALE DO RIO CACHOEIRA": 10.00,
+    "VILA DO PEREIRA": 15.00,
+    "VILA ELZA": 5.00,
+    "VILA PIRES": 7.00,
+    "VILA SABESP": 5.00,
+    "VILA TEODORO": 15.00,
+    "VISTA ALEGRE": 5.00
+
+}
+
+bairro.addEventListener('change', function(){ //BAIRRO É MINHA LISTA DE BAIRRO NO HTML
+    const bairroSelecionado = this.value; // THIS TO PEGANDO ALGO QUE EU SELECIONAR LA
+    if(bairroSelecionado){
+        const taxa = taxas[bairroSelecionado] || 0 ; // TAXAS É O VALOR DA TAXAS
+        const valorPedidos = parseFloat(totalValor.textContent.replace("R$", "").replace(",", ".").trim()); // Obtém o valor total dos pedidos
+        taxasDisplay.textContent = `Taxa de entrega: R$ ${taxa.toFixed(2)}`;
+
+        // Soma a taxa com o valor dos pedidos
+        const valorTotalComTaxa = valorPedidos + taxa;
+
+        // Exibe o valor total com a taxa
+        valorTotalTaxa.textContent = `Total R$ ${valorTotalComTaxa.toFixed(2)}`;
+    } else {
+        // Caso não haja bairro selecionado, limpa os textos
+        taxasDisplay.textContent = "";
+        valorTotalTaxa.textContent = "";
+    }
+});

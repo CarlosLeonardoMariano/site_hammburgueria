@@ -9,6 +9,7 @@
     <meta property="og:image" content="https://site-two-psi-80.vercel.app/imagens_cardapio/Logo%20Hamb%C3%BArguer%20Preto%20e%20Branco%20Retro.png"/>
     <meta property="og:description" content="Os melhores hambúrguer da cidade com fermetações naturais!"/>
     <meta property="og:site_name" content="Piracaia-Burguer"/>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"/>  <!--LINK DO TOASTIFY DO CSS-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -45,6 +46,9 @@
     <p class="border-t-2 border-black flex justify-between items-center font-medium p-1">SÁBADO <span class="flex justify-between items-center font-medium p-3">18:00 - 00:00</span></p>
     <p class="border-t-2 border-black flex justify-between items-center font-medium p-1">DOMINGO <span class="flex justify-between items-center font-medium p-3">18:00 - 00:00</span></p>
 </div>
+
+
+
 
 
 
@@ -896,20 +900,23 @@ Menu Principal
 
 
 <!--INICIO DO MODAL-->
-<div class="bg-black/60 w-full h-full fixed  top-0 left-0 z-[99] hidden justify-center items-center md:h-[100%] md:w-[100%]" id="modal">
-    <div class="bg-white p-5 rounded-md min-w-[89%] md:min-w-[700px] md: min-h-[400px]">
-<h2 class="text-center text-2xl font-bold mb-2">Meu Carrinho</h2>
+<div class="bg-black/60 w-full h-full fixed  top-0 left-0 z-[99] hidden justify-center items-center md:h-full md:w-full" id="modal">
+    <div class="bg-white p-5 rounded-md min-w-[90%] md:min-w-[800px] md: min-h-[200px]" id="over">
+<h2 class="text-center text-2xl font-bold mb-4">Meu Carrinho</h2>
 
 
-<div id="cart-itens" class="flex justify-between mb-2 flex-col"></div>
+<div id="cart-itens" class="flex justify-between mb-1 flex-col"></div>
 
-<p class="font-bold">Total: <span id="cart-total">R$ 0.00</span></p>
+<p class="font-bold">Valor dos Pedidos: <span id="cart-total">R$ 0.00</span></p>
+<p id="taxa" class="font-bold w-full"></p> <!-- Elemento para exibir a taxa -->
+<p id="valorTotalTaxa" class="font-bold w-full"></p> <!-- Elemento para exibir o valor com a taxa inclusa -->
+
 
 
 
 
                 <!--COMEÇO DA DIV-->
-    <div class="flex mt-2 w-full">
+    <div class="flex mt-2 w-full flex-col">
         <button class="w-full font-semibold border p-3 hover:bg-green-500 hover:text-white" id="btn-pag">FORMAS DE PAGAMENTO</button>
         <button class="w-full font-semibold  border p-3 hover:bg-green-500 hover:text-white" id="btn-delivery">DELIVERY</button>
         <button class="w-full font-semibold  border p-3 hover:bg-green-500 hover:text-white" id="btn-retirada">RETIRADA</button>
@@ -926,95 +933,92 @@ Menu Principal
 <input type="text" placeholder="Digite o numero da Casa ou AP " id="endereco_numero" class="w-full border-2 p-1 rounded my-1  border-x-gray-500"> </p>
 
 <p class="font-medium mt-3"> PONTO DE REFERENCIA ?
-<input type="text" placeholder="Ponto de Referencia" id="endereco_referencia" class="w-full border-2 p-1 rounded my-1  border-x-gray-500 ">
-</p>
-
-
+    <input type="text" placeholder="Ponto de Referencia" id="endereco_referencia" class="w-full border-2 p-1 rounded my-1  border-x-gray-500 ">
+    </p>
 
 
 
 
 <div class=" md:w-full md:h-[80%] bg-white h-full justify-center items-center">
 <p class="font-medium mt-3"> BAIRRO</p>
-<select name="bairro"id="bairro" class="w-full h-full border-2 p-1 rounded my-1 mb-10">
-        <option value="selecione">SELECIONE</option>
-        <option value="canedos">ADAO SILVA</option>
-        <option value="canedos">ARPUI</option>
-        <option value="canedos">BARROCAO</option>
-        <option value="canedos">BATATUBA</option>
-        <option value="canedos">BAIRRO DOS MIMIS</option>
-        <option value="canedos">PORTAL DAS PEDRAS</option>
-        <option value="canedos">BELA VISTA</option>
-        <option value="canedos">BELA VISTA 2</option>
-        <option value="canedos">BIQUINHA</option>
-        <option value="canedos">BOA VISTA</option>
-        <option value="canedos">CACHOEIRA ABAIXO</option>
-        <option value="canedos">CAPUAVA</option>
-        <option value="canedos">CATIGUÁ</option>
-        <option value="canedos">CECAP</option>
-        <option value="canedos">CENTRO</option>
-        <option value="canedos">Condominio Águas Claras</option>
-        <option value="canedos">CONDOMINIO BOA VISTA</option>
-        <option value="canedos">CONDOMINIO NAUTICO BRAGANÇA</option>
-        <option value="canedos">CONDOMINIO NAUTICO JAGUARI</option>
-        <option value="canedos">CONDOMINIO NAUTICO PIRACAIA</option>
-        <option value="canedos">CONDOMINIO LARANJEIRAS</option>
-        <option value="canedos">CONDOMINIO PANORAMA</option>
-        <option value="canedos">CONDOMINIO RIVIERA DO JAGUARI</option>
-        <option value="canedos">CONDOMINIO RECANTO DOS PASSAROS</option>
-        <option value="canedos">CONDOMINIO ENSEADA DO JACAREI</option>
-        <option value="canedos">CRAVORANA</option>
-        <option value="canedos">ESTRADA LAMARTINO PEÇANHA(rural)</option>
-        <option value="canedos">FAZENDA SANTA MARIA</option>
-        <option value="canedos">GIRASSOL</option>
-        <option value="canedos">IPE</option>
-        <option value="canedos">JARDIM ALVORADA</option>
-        <option value="canedos">JARDIM ALVORADA 2</option>
-        <option value="canedos">JARDIM PRIMAVEIRA</option>
-        <option value="canedos">JARDIM SANTO AFONSO</option>
-        <option value="canedos">JARDIM SUDO</option>
-        <option value="canedos">JARDIM CLAUDIA</option>
-        <option value="canedos">JUNCAL</option>
-        <option value="canedos">MARGINAL</option>
-        <option value="canedos">MONTE CRISTO</option>
-        <option value="canedos">MORRO VERMELHO</option>
-        <option value="canedos">NOSSO TETO</option>
-        <option value="canedos">NOVA SUIÇA</option>
-        <option value="canedos">NOVO HORIZONTE</option>
-        <option value="canedos">PARQUE DAS PAINEIRAS</option>
-        <option value="canedos">PARQUE DOS PINHEIROS</option>
-        <option value="canedos">PEDROSO</option>
-        <option value="canedos">PINHAL</option>
-        <option value="canedos">PORTAL DAS PEDRAS</option>
-        <option value="canedos">POUSO ALEGRE</option>
-        <option value="canedos">PRAINHA</option>
-        <option value="canedos">RANCHO FORTE</option>
-        <option value="canedos">RECANTO DOS MAIAS</option>
-        <option value="canedos">ROMITE 1</option>
-        <option value="canedos">ROMITE 2</option>
-        <option value="canedos">ROMITE 3</option>
-        <option value="canedos">SAN MARINO</option>
-        <option value="canedos">SANTA FÉ</option>
-        <option value="canedos">SANTA FÉ 2</option>
-        <option value="canedos">SANTO ANTONIO DA CACHOEIRA</option>
-        <option value="canedos">SANTOS REIS</option>
-        <option value="canedos">SÃO BRÁS</option>
-        <option value="canedos">VALE DO ATIBAIA 1</option>
-        <option value="canedos">VALE DO ATIBAIA 2</option>
-        <option value="canedos">VALE DO CACHOEIRA</option>
-        <option value="canedos">VALE DO RIO CACHOEIRA</option>
-        <option value="canedos">VILA DO PEREIRA</option>
-        <option value="canedos">VILA ELZA</option>
-        <option value="canedos">VILA PIRES</option>
-        <option value="canedos">VILA SABESP</option>
-        <option value="canedos">VILA TEODORO</option>
-        <option value="canedos">VISTA ALEGRE</option>
+<select name="bairro"id="bairro" class="w-full h-[90%] border-2 p-1 rounded my-1 mb-10">
+    <option value="">SELECIONE</option>
+    <option value="ADAO SILVA">ADAO SILVA</option>
+    <option value="ARPUI">ARPUI</option>
+    <option value="BARROCAO">BARROCAO</option>
+    <option value="BATATUBA">BATATUBA</option>
+    <option value="BAIRRO DOS MIMIS">BAIRRO DOS MIMIS</option>
+    <option value="PORTAL DAS PEDRAS">PORTAL DAS PEDRAS</option>
+    <option value="BELA VISTA">BELA VISTA</option>
+    <option value="BELA VISTA 2">BELA VISTA 2</option>
+    <option value="BIQUINHA">BIQUINHA</option>
+    <option value="BOA VISTA">BOA VISTA</option>
+    <option value="CACHOEIRA ABAIXO">CACHOEIRA ABAIXO</option>
+    <option value="CAPUAVA">CAPUAVA</option>
+    <option value="CATIGUÁ">CATIGUÁ</option>
+    <option value="CECAP">CECAP</option>
+    <option value="CENTRO">CENTRO</option>
+    <option value="CONDOMINIO ÁGUAS CLARAS">CONDOMINIO ÁGUAS CLARAS</option>
+    <option value="CONDOMINIO BOA VISTA">CONDOMINIO BOA VISTA</option>
+    <option value="CONDOMINIO NAUTICO BRAGANÇA">CONDOMINIO NAUTICO BRAGANÇA</option>
+    <option value="CONDOMINIO NAUTICO JAGUARI">CONDOMINIO NAUTICO JAGUARI</option>
+    <option value="CONDOMINIO NAUTICO PIRACAIA">CONDOMINIO NAUTICO PIRACAIA</option>
+    <option value="CONDOMINIO LARANJEIRAS">CONDOMINIO LARANJEIRAS</option>
+    <option value="CONDOMINIO PANORAMA">CONDOMINIO PANORAMA</option>
+    <option value="CONDOMINIO RIVIERA DO JAGUARI">CONDOMINIO RIVIERA DO JAGUARI</option>
+    <option value="CONDOMINIO RECANTO DOS PASSAROS">CONDOMINIO RECANTO DOS PASSAROS</option>
+    <option value="CONDOMINIO ENSEADA DO JACAREI">CONDOMINIO ENSEADA DO JACAREI</option>
+    <option value="CRAVORANA">CRAVORANA</option>
+    <option value="ESTRADA LAMARTINO PEÇANHA(rural)">ESTRADA LAMARTINO PEÇANHA(rural)</option>
+    <option value="FAZENDA SANTA MARIA">FAZENDA SANTA MARIA</option>
+    <option value="GIRASSOL">GIRASSOL</option>
+    <option value="IPE">IPE</option>
+    <option value="JARDIM ALVORADA">JARDIM ALVORADA</option>
+    <option value="JARDIM ALVORADA 2">JARDIM ALVORADA 2</option>
+    <option value="JARDIM PRIMAVEIRA">JARDIM PRIMAVEIRA</option>
+    <option value="JARDIM SANTO AFONSO">JARDIM SANTO AFONSO</option>
+    <option value="JARDIM SUDO">JARDIM SUDO</option>
+    <option value="JARDIM CLAUDIA">JARDIM CLAUDIA</option>
+    <option value="JUNCAL">JUNCAL</option>
+    <option value="MARGINAL">MARGINAL</option>
+    <option value="MONTE CRISTO">MONTE CRISTO</option>
+    <option value="MORRO VERMELHO">MORRO VERMELHO</option>
+    <option value="NOSSO TETO">NOSSO TETO</option>
+    <option value="NOVA SUIÇA">NOVA SUIÇA</option>
+    <option value="NOVO HORIZONTE">NOVO HORIZONTE</option>
+    <option value="PARQUE DAS PAINEIRAS">PARQUE DAS PAINEIRAS</option>
+    <option value="PARQUE DOS PINHEIROS">PARQUE DOS PINHEIROS</option>
+    <option value="PEDROSO">PEDROSO</option>
+    <option value="PINHAL">PINHAL</option>
+    <option value="POUSO ALEGRE">POUSO ALEGRE</option>
+    <option value="PRAINHA">PRAINHA</option>
+    <option value="RANCHO FORTE">RANCHO FORTE</option>
+    <option value="RECANTO DOS MAIAS">RECANTO DOS MAIAS</option>
+    <option value="ROMITE 1">ROMITE 1</option>
+    <option value="ROMITE 2">ROMITE 2</option>
+    <option value="ROMITE 3">ROMITE 3</option>
+    <option value="SAN MARINO">SAN MARINO</option>
+    <option value="SANTA FÉ">SANTA FÉ</option>
+    <option value="SANTA FÉ 2">SANTA FÉ 2</option>
+    <option value="SANTO ANTONIO DA CACHOEIRA">SANTO ANTONIO DA CACHOEIRA</option>
+    <option value="SANTOS REIS">SANTOS REIS</option>
+    <option value="SÃO BRÁS">SÃO BRÁS</option>
+    <option value="VALE DO ATIBAIA 1">VALE DO ATIBAIA 1</option>
+    <option value="VALE DO ATIBAIA 2">VALE DO ATIBAIA 2</option>
+    <option value="VALE DO CACHOEIRA">VALE DO CACHOEIRA</option>
+    <option value="VALE DO RIO CACHOEIRA">VALE DO RIO CACHOEIRA</option>
+    <option value="VILA DO PEREIRA">VILA DO PEREIRA</option>
+    <option value="VILA ELZA">VILA ELZA</option>
+    <option value="VILA PIRES">VILA PIRES</option>
+    <option value="VILA SABESP">VILA SABESP</option>
+    <option value="VILA TEODORO">VILA TEODORO</option>
+    <option value="VISTA ALEGRE">VISTA ALEGRE</option>
     </select>
 
-
-
-
 </div>
+
+
+
 
 </div>
 
@@ -1036,7 +1040,7 @@ Menu Principal
 
                        <!--FINAL DA PARTE DA RETIRADA-->
 
-<div class="flex itens-center justify-between mt-5 w-full">
+<div class="flex itens-center justify-between mt-4 w-full">
 <button id="btn-model-fechar" class="bg-red-600 w-[49%] text-white p-3 rounded ">Fechar</button>
 <button id="bnt-finalizar" class="bg-green-500 w-[49%] text-white p-3  rounded">Finalizar Pedido</button>
 </div>

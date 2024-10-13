@@ -24,17 +24,28 @@ footer {
 
 
 .modal-conteudo {
-    max-height: 200px; /* ou o tamanho que você preferir */
+    max-height: 100%; /* ou o tamanho que você preferir */
     overflow-y: auto; /* permite rolagem vertical */
 }
 
-.endereço_rolar{
-    max-height: 100px;
+
+
+#over{overflow-y: auto;
+    max-height: 100%}
+
+#modal{overflow-y: auto;
+max-height: 100%}
+
+#info-delivery{
     overflow-y: auto;
+max-height: 600px
 }
 
 
-
+.btnverde{
+    background-color:#16A34A !important;
+    color:white
+}
 
 /* Estilo para dispositivos móveis */
 @media (max-width: 600px) { /* Ajuste a largura conforme necessário */
