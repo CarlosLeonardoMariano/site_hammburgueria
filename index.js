@@ -33,6 +33,7 @@ const bairro = document.getElementById('bairro');
 const paymentButton = document.querySelectorAll('.payment-button')
 const taxasDisplay = document.getElementById('taxa')
 const valorTotalTaxa = document.getElementById('valorTotalTaxa')
+const pesquisa = document.getElementById('pesquisa')
 
 
 let carrinho = []
@@ -312,7 +313,7 @@ bntFinalizar.addEventListener('click', () => {
             return `PEDIDOS: ${item.dataName}\nQUANTIDADE: ${item.quantidade}\nPreço: R$ ${item.dataPrice}\n-------------------------------------------------\n`;
         }).join("");
 
-        const msg = encodeURIComponent(`${whatsapp}\nNome: ${endereco_nome.value}\nEndereço: ${endereco.value}\nNúmero: ${enderecoNumero.value}\nBairro: ${bairro.value}\n Ponto de referencia: ${referencia.value}\nValor Total: R$ ${valorTotalTaxa.textContent}\nForma de Pagamento: ${pagamentoMetodo}\nTroco Para?  R$:${input_troco.value}\nHora Prevista da Entrega: ${horaPrevista()}`);
+        const msg = encodeURIComponent(`${whatsapp}\nNome: ${endereco_nome.value}\nEndereço: ${endereco.value}\nNúmero: ${enderecoNumero.value}\nBairro: ${bairro.value}\n Ponto de referencia: ${referencia.value}\nForma de Pagamento: ${pagamentoMetodo}\nTroco Para: ${input_troco.value +'R$'}\n${valorTotalTaxa.textContent}\nHora Prevista da Entrega: ${horaPrevista()}`);
         const phone = "+5511973245437";
         window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
         carrinho.length = 0; // Limpa o carrinho
@@ -685,10 +686,41 @@ bairro.addEventListener('change', function(){ //BAIRRO É MINHA LISTA DE BAIRRO 
         const valorTotalComTaxa = valorPedidos + taxa;
 
         // Exibe o valor total com a taxa
-        valorTotalTaxa.textContent = `Total R$ ${valorTotalComTaxa.toFixed(2)}`;
+        valorTotalTaxa.textContent = `Total R$: ${valorTotalComTaxa.toFixed(2)}`;
     } else {
         // Caso não haja bairro selecionado, limpa os textos
         taxasDisplay.textContent = "";
         valorTotalTaxa.textContent = "";
     }
 });
+
+
+
+
+pesquisa.addEventListener('click',function(){
+    pesquisa_input.classList.toggle('mostrar')
+})
+
+
+
+
+
+// HORA QUE O USUARIO DIGITAR VAI MOSTRAR O LANCHE QUE ELE QUER !!
+
+
+    const pesquisaInput = document.getElementById('pesquisa_input');
+    const produtos = Array.from(menuLanche.getElementsByClassName('flex gap-2'));
+
+    pesquisaInput.addEventListener('input', () => {
+        const filtro = pesquisaInput.value.toLowerCase();
+
+        produtos.forEach(produto => {
+            const nomeProduto = produto.querySelector('p.font-bold').innerText.toLowerCase();
+            if (nomeProduto.includes(filtro)) {
+                produto.style.display = 'flex'; // Mostra o produto se corresponder
+
+            } else {
+                produto.style.display = 'none'; // Oculta o produto se não corresponder
+            }
+        });
+    });

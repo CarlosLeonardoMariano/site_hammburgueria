@@ -9,7 +9,6 @@
     <meta property="og:image" content="https://site-two-psi-80.vercel.app/imagens_cardapio/Logo%20Hamb%C3%BArguer%20Preto%20e%20Branco%20Retro.png"/>
     <meta property="og:description" content="Os melhores hambúrguer da cidade com fermetações naturais!"/>
     <meta property="og:site_name" content="Piracaia-Burguer"/>
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"/>  <!--LINK DO TOASTIFY DO CSS-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -21,7 +20,8 @@
    
 <!--HEADER-->
 <header class="w-full h-[420px] bg-zinc-900 bg-cover bg-center bg-home">
-    <!-- Conteúdo do header -->
+    
+    <div><!-- Conteúdo do header -->
   
     <div class="w-full h-full flex flex-col justify-center items-center">
         <img src="imagens_cardapio/Logo Hambúrguer Preto e Branco Retro.png" alt="logo" class="w-32 h-32 rounded-full shadow-lg hover:scale-110 duration-200">
@@ -60,7 +60,12 @@
 
 
 
+<div id="div_pesquisa">
+    <img src="imagens_cardapio/search_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="" id="pesquisa">
+    <input type="text" name="" id="pesquisa_input" placeholder="
+    O QUE VOCÊ VAI PEDIR HOJE?">
 
+</div>
 
 <h2 class="text-2xl md:text-4xl font-bold text-center mt-9 mb-6">
 Menu Principal 
@@ -212,10 +217,11 @@ Menu Principal
 
 <div class="flex gap-2">
     <img src="imagens_cardapio/hamb-5.png" alt="smach salada"
+
  class="w-28 h-28 rounded-md hover:scale-110 duration-500">
 
 <div>
-    <p class="font-bold">Smach Salada</p>
+    <p class="font-bold" class="produto">Smach Salada</p>
     <p class="text-sm">Pão brioche + hambúrguer de costela + Mussarela + Tomate + Cebola caramelizada + Molho especial da casa + Alface.
     </p>
 
@@ -880,6 +886,17 @@ Menu Principal
 
 
 
+
+
+                  
+
+
+
+
+
+
+
+
 </div>
 <!--FIM DA GRID BEBIDAS-->
 
@@ -902,7 +919,8 @@ Menu Principal
 <!--INICIO DO MODAL-->
 <div class="bg-black/60 w-full h-full fixed  top-0 left-0 z-[99] hidden justify-center items-center md:h-full md:w-full" id="modal">
     <div class="bg-white p-5 rounded-md min-w-[90%] md:min-w-[800px] md: min-h-[200px]" id="over">
-<h2 class="text-center text-2xl font-bold mb-4">Meu Carrinho</h2>
+        
+<h2 class="text-center text-2xl font-bold mb-4 mt-5">Meu Carrinho</h2>
 
 
 <div id="cart-itens" class="flex justify-between mb-1 flex-col"></div>

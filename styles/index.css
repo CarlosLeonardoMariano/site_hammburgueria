@@ -1,15 +1,72 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+head{font-family: "Poppins", sans-serif;}
 
 body{
     background-color: #f6f7f8;
+    font-family: "Poppins", sans-serif;
 }
 
 footer {
     z-index: 60; /* ou um valor maior */
 }
+
+#pesquisa {
+    width: 40px;
+    height: 40px;
+    z-index: 0;
+    text-align: center;
+    justify-content: center;
+    left: 0;
+    top: 0;
+    display: flex;
+    border: none;
+    cursor: pointer;
+    
+
+}
+
+
+
+#div_pesquisa{
+ display: flex;
+padding: 10px;
+justify-content: center;
+}
+
+
+
+
+#pesquisa_input {
+    width: 0; /* Começa com 0 largura */
+    height: 35px;
+    z-index: 0;
+    text-align: center;
+    justify-content: center;
+    left: 24%;
+    top: 27%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 7px;
+    border: none;
+    text-align: left;
+    transition: all 500ms ease-in;
+    overflow: hidden; /* Esconde o conteúdo enquanto a largura é 0 */
+    opacity: 0; /* Começa invisível */
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.664);
+    font-size: 20px;
+    text-indent: 10px;
+}
+
+#pesquisa_input.mostrar {
+    width: 100%; /* Aumenta para 100% quando a classe 'mostrar' é adicionada */
+    opacity: 1; /* Torna visível */
+    border: none;
+}
+
+
 
 
 .hidden {
@@ -50,7 +107,7 @@ max-height: 600px
 /* Estilo para dispositivos móveis */
 @media (max-width: 600px) { /* Ajuste a largura conforme necessário */
     .modal-conteudo {
-        max-height: 100px; /* altura menor para celular */
+        max-height: 100%; /* altura menor para celular */
         overflow-y: auto; /* permite rolagem vertical */
     }
 }
@@ -60,9 +117,18 @@ max-height: 600px
     overflow-y: auto; /* permite rolagem vertical */
 }
 
+
+#over{overflow-y: auto;
+    max-height: 100%}
+
+
 /* Estilo para dispositivos móveis */
 @media (max-width: 600px) {
     .endereço_rolar {
         max-height: 150px; /* altura menor para celular */
     }
 }
+
+
+#over{overflow-y: auto;
+    max-height: 100%}
