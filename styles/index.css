@@ -122,6 +122,13 @@ max-height: 600px
     max-height: 100%}
 
 
+    #pesquisa_input.mostrar {
+        font-size: 17px;
+    }
+    #pesquisa_input {
+        font-size: 17px;
+    }
+
 /* Estilo para dispositivos móveis */
 @media (max-width: 600px) {
     .endereço_rolar {
