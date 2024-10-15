@@ -1885,6 +1885,10 @@ video {
   border-radius: 0.25rem;
 }
 
+.rounded-3xl {
+  border-radius: 1.5rem;
+}
+
 .rounded-full {
   border-radius: 9999px;
 }
@@ -2096,6 +2100,11 @@ video {
 .bg-red-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(220 38 38 / var(--tw-bg-opacity));
+}
+
+.bg-red-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(185 28 28 / var(--tw-bg-opacity));
 }
 
 .bg-white {
@@ -2889,10 +2898,8 @@ footer {
   width: 40px;
   height: 40px;
   z-index: 0;
-  text-align: center;
-  justify-content: center;
-  left: 0;
-  top: 0;
+  text-align: end;
+  justify-content: end;
   display: flex;
   border: none;
   cursor: pointer;
@@ -2902,6 +2909,7 @@ footer {
   display: flex;
   padding: 10px;
   justify-content: center;
+  width: 100%;
 }
 
 #pesquisa_input {
@@ -2909,14 +2917,11 @@ footer {
   /* Começa com 0 largura */
   height: 35px;
   z-index: 0;
-  text-align: center;
   justify-content: center;
-  left: 24%;
-  top: 27%;
   background-color: rgb(255, 255, 255);
   border-radius: 7px;
   border: none;
-  text-align: left;
+  text-align: center;
   transition: all 500ms ease-in;
   overflow: hidden;
   /* Esconde o conteúdo enquanto a largura é 0 */
@@ -2933,6 +2938,11 @@ footer {
   opacity: 1;
   /* Torna visível */
   border: none;
+}
+
+.add-lanches-btn {
+  display: inline-block;
+  /* Garante que o botão seja visível */
 }
 
 .hidden {
@@ -2965,7 +2975,11 @@ footer {
 
 #info-delivery{
   overflow-y: auto;
-  max-height: 600px
+  max-height: 600px;
+}
+
+#info-delivery > input{
+  border-radius: 10px;
 }
 
 .btnverde{
@@ -2973,10 +2987,28 @@ footer {
   color:white
 }
 
+#mensagem {
+  text-align: center;
+  font-size: 25px;
+  color: red;
+  /* Ou a cor que você preferir */
+  margin-top: 20px;
+  /* Espaço em cima da mensagem */
+}
+
 /* Estilo para dispositivos móveis */
 
 @media (max-width: 600px) {
   /* Ajuste a largura conforme necessário */
+
+  head{
+    font-family: "Poppins", sans-serif;
+  }
+
+  body{
+    background-color: #f6f7f8;
+    font-family: "Poppins", sans-serif;
+  }
 
   .modal-conteudo {
     max-height: 100%;
@@ -2998,18 +3030,74 @@ footer {
   max-height: 100%
 }
 
+#pesquisa_input.mostrar {
+  font-size: 17px;
+}
+
+#pesquisa_input {
+  font-size: 17px;
+}
+
 /* Estilo para dispositivos móveis */
 
-@media (max-width: 600px) {
-  .endereço_rolar {
-    max-height: 150px;
-    /* altura menor para celular */
-  }
+.endereço_rolar {
+  max-height: 150px;
+  /* altura menor para celular */
 }
 
 #over{
   overflow-y: auto;
   max-height: 100%
+}
+
+#mensagem {
+  text-align: center;
+  font-size: 17px;
+  color: red;
+  margin-top: 10px;
+}
+
+#pesquisa_input {
+  width: 0;
+  /* Começa com 0 largura */
+  height: 35px;
+  z-index: 0;
+  text-align: center;
+  justify-content: center;
+  left: 24%;
+  top: 27%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 7px;
+  border: none;
+  transition: all 500ms ease-in;
+  overflow: hidden;
+  /* Esconde o conteúdo enquanto a largura é 0 */
+  opacity: 0;
+  /* Começa invisível */
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.664);
+  font-size: 17px;
+  text-indent: 5px;
+}
+
+#pesquisa_input.mostrar {
+  width: 100%;
+  /* Aumenta para 100% quando a classe 'mostrar' é adicionada */
+  opacity: 1;
+  /* Torna visível */
+  border: none;
+}
+
+#pesquisa {
+  width: 40px;
+  height: 40px;
+  z-index: 0;
+  text-align: center;
+  justify-content: center;
+  left: 0;
+  top: 0;
+  display: flex;
+  border: none;
+  cursor: pointer;
 }
 
 @media (min-width: 640px) {

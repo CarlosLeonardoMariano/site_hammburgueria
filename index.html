@@ -63,9 +63,11 @@
 <div id="div_pesquisa">
     <img src="imagens_cardapio/search_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="" id="pesquisa">
     <input type="text" name="" id="pesquisa_input" placeholder="
-    O QUE VOCÊ VAI PEDIR HOJE?">
+    O QUE VOCÊ VAI PEDIR HOJE?" class="p-1">
 
 </div>
+<div id="mensagem" style="display: none;">Nenhum produto encontrado.</div>
+
 
 <h2 class="text-2xl md:text-4xl font-bold text-center mt-9 mb-6">
 Menu Principal 
@@ -73,6 +75,7 @@ Menu Principal
 
 <!-- INICIO DO MENU-->
 <div id="menu">
+
 <main class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-12 mx-auto max-w-7xl px-2 mb-16 ">
 
 <!--COMEÇO DOS PRODUTO-->
@@ -88,7 +91,7 @@ Menu Principal
 
 <div class="flex items-center gap-2 justify-between mt-3" data-name="Smach salada duplo" data-price="30.00">
     <p class="font-bold text-lg">R$ 30.00 </p>
-    <button class="bg-gray-950 px-3 rounded add-lanches-btn" > 
+    <button class="bg-gray-950 px-3 rounded add-lanches-btn " > 
         <img src="imagens_cardapio/shopping_cart_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="" class="w-8 h-8 ">
     </button>
             </div>
@@ -870,7 +873,7 @@ Menu Principal
 <div class="flex items-center gap-2 justify-between mt-3" data-name="Guaraná Antarctica Zero 2L" data-price="14.00">
     <p class="font-bold text-lg">R$ 14.00 </p>
     <button class="bg-gray-950 px-3 rounded add-lanches-btn" > 
-        <img src="imagens_cardapio/shopping_cart_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="" class="w-8 h-8 ">
+        <img src="imagens_cardapio/shopping_cart_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="" class="w-8 h-8">
     </button>
             </div>
                   </div>
@@ -942,16 +945,16 @@ Menu Principal
         
     <div class="w-full hidden " id="info-delivery">
 <p class="font-medium mt-3"> QUAL É SEU NOME ?
-<input type="text" placeholder="Digite o seu nome" id="endereco_nome" class="w-full border-2 p-1 rounded my-1 border-x-gray-500"> </p>
+<input type="text" placeholder="Digite o seu nome" id="endereco_nome" class="w-full border-2 p-2 rounded-3xl my-1 border-x-gray-500"> </p>
 
 <p class="font-medium mt-3"> NOME DA RUA OU AV ?
-<input type="text" placeholder="Digite o nome da rua completo " id="endereco" class="w-full border-2 p-1 rounded my-1  border-x-gray-500"  > </p>
+<input type="text" placeholder="Digite o nome da rua completo " id="endereco" class="w-full border-2 p-2 rounded-3xl my-1  border-x-gray-500"  > </p>
 
 <p class="font-medium mt-3"> NÚMERO ? 
-<input type="text" placeholder="Digite o numero da Casa ou AP " id="endereco_numero" class="w-full border-2 p-1 rounded my-1  border-x-gray-500"> </p>
+<input type="text" placeholder="Digite o numero da Casa ou AP " id="endereco_numero" class="w-full border-2 p-2 rounded-3xl my-1  border-x-gray-500"> </p>
 
 <p class="font-medium mt-3"> PONTO DE REFERENCIA ?
-    <input type="text" placeholder="Ponto de Referencia" id="endereco_referencia" class="w-full border-2 p-1 rounded my-1  border-x-gray-500 ">
+    <input type="text" placeholder="Ponto de Referencia" id="endereco_referencia" class="w-full border-2 p-2 rounded-3xl my-1  border-x-gray-500 ">
     </p>
 
 
@@ -1047,10 +1050,10 @@ Menu Principal
 
 <div class="w-full hidden " id="info-retirada">
     <p class="font-medium mt-3"> QUAL É SEU NOME ?
-        <input type="text" placeholder="Digite o seu nome" id="endereco_nomeRetirada" class="w-full border-2 p-1 rounded my-1 border-x-gray-500"> </p>
+        <input type="text" placeholder="Digite o seu nome" id="endereco_nomeRetirada" class="w-full border-2 p-2 rounded-3xl  my-1 border-x-gray-500"> </p>
 
         <p class="font-medium mt-3"> NÚMERO DO WHATSAPP ? 
-        <input type="text" placeholder="Digite o numero do seu whatsapp " id="endereco_whatsapp" class="w-full border-2 p-1 rounded my-1  border-x-gray-500"> </p>
+        <input type="text" placeholder="Digite o numero do seu whatsapp " id="endereco_whatsapp" class="w-full border-2 p-2 rounded-3xl  my-1  border-x-gray-500"> </p>
 </div>
 
 

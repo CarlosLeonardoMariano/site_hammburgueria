@@ -34,6 +34,7 @@ const paymentButton = document.querySelectorAll('.payment-button')
 const taxasDisplay = document.getElementById('taxa')
 const valorTotalTaxa = document.getElementById('valorTotalTaxa')
 const pesquisa = document.getElementById('pesquisa')
+const over = document.getElementById('over')
 
 
 let carrinho = []
@@ -243,6 +244,7 @@ bntFinalizar.addEventListener('click', () => {
         }).showToast();
         return;
     }
+
     
 
     // Verifica se o carrinho está vazio
@@ -303,7 +305,8 @@ bntFinalizar.addEventListener('click', () => {
         Toastify({ text: "SELECIONE A FORMA DE PAGAMENTO", duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "red" }}).showToast();
         valid = false;
     }
-
+    }
+if(valid){
     if (valid) {
         Toastify({ text: "PEDIDO CONFIRMADO", duration: 1000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "#4CAF50" }}).showToast();
 
@@ -392,14 +395,13 @@ function horarioRestaurante() {
         case 6: // Sábado
             aberto = hora >= 1 && hora < 24;
             break;
-
+            case 1:
         case 2: // Terça
         case 3: // Quarta
             aberto = hora >= 1 && hora < 23;
             break;
 
         default:
-            Toastify({ text: `RESTAURANTE FECHADO!`, duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "green" }}).showToast();
     }
 
     return aberto; // Retorne o valor de 'aberto'
@@ -407,11 +409,11 @@ function horarioRestaurante() {
 
     const horario_Aberto = horarioRestaurante();
         if (horario_Aberto) {
-            horario.classList.remove('bg-red-600');
+            horario.classList.remove('bg-red-700');
                 horario.classList.add('bg-green-600');
                     } else {
                 horario.classList.remove('bg-green-600');
-            horario.classList.add('bg-red-600');
+            horario.classList.add('bg-red-700');
         }
 
 
@@ -697,30 +699,49 @@ bairro.addEventListener('change', function(){ //BAIRRO É MINHA LISTA DE BAIRRO 
 
 
 
+
+
+// FUNÇÃO PRA FAZER APARECER A BARRA DE PESQUISA
 pesquisa.addEventListener('click',function(){
-    pesquisa_input.classList.toggle('mostrar')
+    pesquisaInput.classList.toggle('mostrar')
 })
 
+// FUNÇÃO PARA APARECER OS LANCHES TODA VEZ QUE EU PROCURAR POR ELE
+const pesquisaInput = document.getElementById('pesquisa_input');
+const produtos = Array.from(menuLanche.getElementsByClassName('flex gap-2'));
+const msg = document.getElementById('mensagem')
 
+pesquisaInput.addEventListener('input', () => {
+    const filtro = pesquisaInput.value.toLowerCase();
+    let encontrouProduto = false; // Variável para rastrear se algum produto foi encontrado
 
+    produtos.forEach(produto => {
+        const nomeProduto = produto.querySelector('p.font-bold').innerText.toLowerCase();
 
+        // Verifica se o campo de pesquisa está vazio
+        if (filtro === "") {
+            produto.style.display = 'flex'; // Mostra todos os produtos quando a pesquisa está vazia
+            encontrouProduto = true; // Sempre há produtos quando a pesquisa está vazia
 
-// HORA QUE O USUARIO DIGITAR VAI MOSTRAR O LANCHE QUE ELE QUER !!
+        } else if (nomeProduto.includes(filtro)) {
+            produto.style.display = 'flex'; // Mostra o produto que corresponde à pesquisa
+            // Mostra o botão de adicionar lanche
+            produto.querySelectorAll('.add-lanches-btn').produto.style.display = 'block';
 
+        }
 
-    const pesquisaInput = document.getElementById('pesquisa_input');
-    const produtos = Array.from(menuLanche.getElementsByClassName('flex gap-2'));
-
-    pesquisaInput.addEventListener('input', () => {
-        const filtro = pesquisaInput.value.toLowerCase();
-
-        produtos.forEach(produto => {
-            const nomeProduto = produto.querySelector('p.font-bold').innerText.toLowerCase();
-            if (nomeProduto.includes(filtro)) {
-                produto.style.display = 'flex'; // Mostra o produto se corresponder
-
-            } else {
-                produto.style.display = 'none'; // Oculta o produto se não corresponder
-            }
-        });
+         else {
+            produto.style.display = 'none'; // Oculta os produtos que não correspondem à pesquisa
+        }
     });
+    if (!encontrouProduto) {
+        msg.style.display = 'block';
+    } else {
+        msg.style.display = 'none';
+    }
+});
+
+
+
+
+

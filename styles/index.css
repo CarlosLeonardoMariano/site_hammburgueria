@@ -10,6 +10,7 @@ body{
     font-family: "Poppins", sans-serif;
 }
 
+
 footer {
     z-index: 60; /* ou um valor maior */
 }
@@ -18,8 +19,8 @@ footer {
     width: 40px;
     height: 40px;
     z-index: 0;
-    text-align: center;
-    justify-content: center;
+    text-align: left;
+    justify-content: left;
     left: 0;
     top: 0;
     display: flex;
@@ -34,7 +35,7 @@ footer {
 #div_pesquisa{
  display: flex;
 padding: 10px;
-justify-content: center;
+justify-content: left;
 }
 
 
@@ -44,14 +45,13 @@ justify-content: center;
     width: 0; /* Começa com 0 largura */
     height: 35px;
     z-index: 0;
-    text-align: center;
-    justify-content: center;
+    text-align: left;
+    justify-content:left;
     left: 24%;
     top: 27%;
     background-color: rgb(255, 255, 255);
     border-radius: 7px;
     border: none;
-    text-align: left;
     transition: all 500ms ease-in;
     overflow: hidden; /* Esconde o conteúdo enquanto a largura é 0 */
     opacity: 0; /* Começa invisível */
@@ -64,6 +64,10 @@ justify-content: center;
     width: 100%; /* Aumenta para 100% quando a classe 'mostrar' é adicionada */
     opacity: 1; /* Torna visível */
     border: none;
+}
+
+.add-lanches-btn {
+    display: inline-block; /* Garante que o botão seja visível */
 }
 
 
@@ -104,6 +108,14 @@ max-height: 600px
     color:white
 }
 
+#mensagem {
+    text-align: center;
+    font-size: 25px;
+    color: red; /* Ou a cor que você preferir */
+    margin-top: 20px; /* Espaço em cima da mensagem */
+}
+
+
 /* Estilo para dispositivos móveis */
 @media (max-width: 600px) { /* Ajuste a largura conforme necessário */
     .modal-conteudo {
@@ -118,6 +130,7 @@ max-height: 600px
 }
 
 
+
 #over{overflow-y: auto;
     max-height: 100%}
 
@@ -129,13 +142,28 @@ max-height: 600px
         font-size: 17px;
     }
 
+
+
 /* Estilo para dispositivos móveis */
-@media (max-width: 600px) {
     .endereço_rolar {
         max-height: 150px; /* altura menor para celular */
     }
-}
 
 
 #over{overflow-y: auto;
     max-height: 100%}
+
+
+#mensagem {
+    text-align: center;
+    font-size: 17px;
+    background-color: red;
+    margin-top: 10px;
+}
+
+head{font-family: "Poppins", sans-serif;}
+
+body{
+    background-color: #f6f7f8;
+    font-family: "Poppins", sans-serif;
+}
