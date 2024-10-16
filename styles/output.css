@@ -2898,8 +2898,10 @@ footer {
   width: 40px;
   height: 40px;
   z-index: 0;
-  text-align: end;
-  justify-content: end;
+  text-align: justify;
+  justify-content: left;
+  left: 0;
+  top: 0;
   display: flex;
   border: none;
   cursor: pointer;
@@ -2909,7 +2911,6 @@ footer {
   display: flex;
   padding: 10px;
   justify-content: center;
-  width: 100%;
 }
 
 #pesquisa_input {
@@ -2917,11 +2918,13 @@ footer {
   /* Começa com 0 largura */
   height: 35px;
   z-index: 0;
-  justify-content: center;
+  text-align: justify;
+  justify-content:center;
+  left: 24%;
+  top: 27%;
   background-color: rgb(255, 255, 255);
   border-radius: 7px;
   border: none;
-  text-align: center;
   transition: all 500ms ease-in;
   overflow: hidden;
   /* Esconde o conteúdo enquanto a largura é 0 */
@@ -2975,11 +2978,7 @@ footer {
 
 #info-delivery{
   overflow-y: auto;
-  max-height: 600px;
-}
-
-#info-delivery > input{
-  border-radius: 10px;
+  max-height: 600px
 }
 
 .btnverde{
@@ -3000,15 +2999,6 @@ footer {
 
 @media (max-width: 600px) {
   /* Ajuste a largura conforme necessário */
-
-  head{
-    font-family: "Poppins", sans-serif;
-  }
-
-  body{
-    background-color: #f6f7f8;
-    font-family: "Poppins", sans-serif;
-  }
 
   .modal-conteudo {
     max-height: 100%;
@@ -3057,47 +3047,13 @@ footer {
   margin-top: 10px;
 }
 
-#pesquisa_input {
-  width: 0;
-  /* Começa com 0 largura */
-  height: 35px;
-  z-index: 0;
-  text-align: center;
-  justify-content: center;
-  left: 24%;
-  top: 27%;
-  background-color: rgb(255, 255, 255);
-  border-radius: 7px;
-  border: none;
-  transition: all 500ms ease-in;
-  overflow: hidden;
-  /* Esconde o conteúdo enquanto a largura é 0 */
-  opacity: 0;
-  /* Começa invisível */
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.664);
-  font-size: 17px;
-  text-indent: 5px;
+head{
+  font-family: "Poppins", sans-serif;
 }
 
-#pesquisa_input.mostrar {
-  width: 100%;
-  /* Aumenta para 100% quando a classe 'mostrar' é adicionada */
-  opacity: 1;
-  /* Torna visível */
-  border: none;
-}
-
-#pesquisa {
-  width: 40px;
-  height: 40px;
-  z-index: 0;
-  text-align: center;
-  justify-content: center;
-  left: 0;
-  top: 0;
-  display: flex;
-  border: none;
-  cursor: pointer;
+body{
+  background-color: #f6f7f8;
+  font-family: "Poppins", sans-serif;
 }
 
 @media (min-width: 640px) {

@@ -245,137 +245,124 @@ bntFinalizar.addEventListener('click', () => {
         return;
     }
 
-    
-
     // Verifica se o carrinho está vazio
     if (carrinho.length === 0) return;
    
-    
-  // Se estiver em DELIVERY
-  if (!infoDelivery.classList.contains('hidden')) {
-    let valid = true;
+    // Se estiver em DELIVERY
+    if (!infoDelivery.classList.contains('hidden')) {
+        let valid = true; // Declaração de 'valid' no escopo correto
 
-    if (endereco_nome.value === "") {
-        endereco_nome.classList.add('border-red-500');
-        Toastify({ text: "PREENCHA O CAMPO DE NOME", duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "red" }}).showToast();
-        valid = false;
-        return;
-    }
-     else {
-        endereco_nome.classList.remove('border-red-500');
-    }
-
-    if (endereco.value === "") {
-        endereco.classList.add('border-red-500');
-        Toastify({ text: "PREENCHA O CAMPO DE ENDEREÇO", duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "red" }}).showToast();
-        valid = false;
-        return;
-    }  else {
-        endereco.classList.remove('border-red-500');
-    }
-
-    
-
-
-    if (enderecoNumero.value === "") {
-        enderecoNumero.classList.add('border-red-500');
-        Toastify({ text: "PREENCHA O CAMPO DE NUMERO", duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "red" }}).showToast();
-        valid = false;
-        return;
-    } 
-    else{
-        enderecoNumero.classList.remove('border-red-500');
-        
-    }
-
-
-
-   if(bairro.value === ""){
-    bairro.classList.add('border-red-500')
-        Toastify({ text: "SELECIONE O BAIRRO!", duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "red" }}).showToast();
+        if (endereco_nome.value === "") {
+            endereco_nome.classList.add('border-red-500');
+            Toastify({ text: "PREENCHA O CAMPO DE NOME", duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "red" }}).showToast();
             valid = false;
             return;
-   } else {
-    bairro.classList.remove('border-red-500');
-   }
+        } else {
+            endereco_nome.classList.remove('border-red-500');
+        }
 
+        if (endereco.value === "") {
+            endereco.classList.add('border-red-500');
+            Toastify({ text: "PREENCHA O CAMPO DE ENDEREÇO", duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "red" }}).showToast();
+            valid = false;
+            return;
+        } else {
+            endereco.classList.remove('border-red-500');
+        }
 
-    // Verifica outros campos de DELIVERY...
-    if (!pagamentoMetodo) {
-        Toastify({ text: "SELECIONE A FORMA DE PAGAMENTO", duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "red" }}).showToast();
-        valid = false;
-    }
-    }
-if(valid){
-    if (valid) {
-        Toastify({ text: "PEDIDO CONFIRMADO", duration: 1000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "#4CAF50" }}).showToast();
+        if (enderecoNumero.value === "") {
+            enderecoNumero.classList.add('border-red-500');
+            Toastify({ text: "PREENCHA O CAMPO DE NUMERO", duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "red" }}).showToast();
+            valid = false;
+            return;
+        } else {
+            enderecoNumero.classList.remove('border-red-500');
+        }
 
-    if (valid) {
-        // Enviar Via WhatsApp
-      setTimeout(()=>{  const whatsapp = carrinho.map((item) => {
-            return `PEDIDOS: ${item.dataName}\nQUANTIDADE: ${item.quantidade}\nPreço: R$ ${item.dataPrice}\n-------------------------------------------------\n`;
-        }).join("");
+        if (bairro.value === "") {
+            bairro.classList.add('border-red-500');
+            Toastify({ text: "SELECIONE O BAIRRO!", duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "red" }}).showToast();
+            valid = false;
+            return;
+        } else {
+            bairro.classList.remove('border-red-500');
+        }
 
-        const msg = encodeURIComponent(`${whatsapp}\nNome: ${endereco_nome.value}\nEndereço: ${endereco.value}\nNúmero: ${enderecoNumero.value}\nBairro: ${bairro.value}\n Ponto de referencia: ${referencia.value}\nForma de Pagamento: ${pagamentoMetodo}\nTroco Para: ${input_troco.value +'R$'}\n${valorTotalTaxa.textContent}\nHora Prevista da Entrega: ${horaPrevista()}`);
-        const phone = "+5511973245437";
-        window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
-        carrinho.length = 0; // Limpa o carrinho
-        input_troco.value = ""
-        valorTroco.innerHTML = ""
-        updateModal(); // Atualiza o modal, se necessário
-    },1000)
-    }}
-}
-// Se estiver em RETIRADA
-if (!infoRetirada.classList.contains('hidden')) {
-    let valid = true;
-    
+        if (!pagamentoMetodo) {
+            Toastify({ text: "SELECIONE A FORMA DE PAGAMENTO", duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "red" }}).showToast();
+            valid = false;
+            return;
+        }
 
-    if (endereco_nomeRetirada.value === "") {
-        endereco_nomeRetirada.classList.add('border-red-500');
-        Toastify({ text: "PREENCHA O CAMPO DE NOME", duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "red" }}).showToast();
-        valid = false;
-        return;
-    } else {
-        endereco_nomeRetirada.classList.remove('border-red-500');
-    }
+        if (valid) {
+            Toastify({ text: "PEDIDO CONFIRMADO", duration: 1000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "#4CAF50" }}).showToast();
 
-    if (endereco_whatsapp.value === "") {
-        endereco_whatsapp.classList.add('border-red-500');
-        Toastify({ text: "PREENCHA O CAMPO DE WHATSAPP", duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "red" }}).showToast();
-        valid = false;
-        return;
-    } else {
-        endereco_whatsapp.classList.remove('border-red-500');
-    }
+            setTimeout(() => {
+                const whatsapp = carrinho.map((item) => {
+                    return `PEDIDOS: ${item.dataName}\nQUANTIDADE: ${item.quantidade}\nPreço: R$ ${item.dataPrice}\n-------------------------------------------------\n`;
+                }).join("");
 
-    // FAZENDO O CLIENTE COLOCAR A FORMA DE PAGAMENTO NA PARTE DE RETIRADA
-    if(!pagamentoMetodo){
-        Toastify({ text: "SELECIONE A FORMA DE PAGAMENTO", duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "red" }}).showToast();
-        valid = false;
+                const msg = encodeURIComponent(`${whatsapp}\nNome: ${endereco_nome.value}\nEndereço: ${endereco.value}\nNúmero: ${enderecoNumero.value}\nBairro: ${bairro.value}\nPonto de referencia: ${referencia.value}\nForma de Pagamento: ${pagamentoMetodo}\nTroco Para R$? ${input_troco.value + 'R$'}\n${valorTotalTaxa.textContent}\nHora Prevista da Entrega: ${horaPrevista()}`);
+                const phone = "+5511973245437";
+                window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
+
+                carrinho.length = 0; // Limpa o carrinho
+                input_troco.value = "";
+                valorTroco.innerHTML = "";
+                updateModal(); // Atualiza o modal, se necessário
+            }, 1000);
+        }
     }
 
-    if (valid) {
-        Toastify({ text: "PEDIDO CONFIRMADO", duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "#4CAF50" }}).showToast();
+    // Se estiver em RETIRADA
+    if (!infoRetirada.classList.contains('hidden')) {
+        let valid = true; // Declaração de 'valid' para o caso de RETIRADA
 
-    if (valid) {
+        if (endereco_nomeRetirada.value === "") {
+            endereco_nomeRetirada.classList.add('border-red-500');
+            Toastify({ text: "PREENCHA O CAMPO DE NOME", duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "red" }}).showToast();
+            valid = false;
+            return;
+        } else {
+            endereco_nomeRetirada.classList.remove('border-red-500');
+        }
 
-        setTimeout(()=>{  const whatsapp = carrinho.map((item) => {
-            return `PEDIDOS: ${item.dataName}\nQUANTIDADE: ${item.quantidade}\nPreço: R$ ${item.dataPrice}\n-------------------------------------------------\n`;
-        }).join("");
+        if (endereco_whatsapp.value === "") {
+            endereco_whatsapp.classList.add('border-red-500');
+            Toastify({ text: "PREENCHA O CAMPO DE WHATSAPP", duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "red" }}).showToast();
+            valid = false;
+            return;
+        } else {
+            endereco_whatsapp.classList.remove('border-red-500');
+        }
 
-         // Adiciona a forma de pagamento à mensagem
-        const msg = encodeURIComponent(`${whatsapp}\nNome: ${endereco_nomeRetirada.value}\nNúmero Whatsapp: ${endereco_whatsapp.value}\nValor Total: ${totalValor.textContent}\nForma de Pagamento: ${pagamentoMetodo}\nTroco Para?  R$${input_troco.value}\nHora Prevista Para Retirada: ${horaRetirada()}`);
-        const phone = "+5511973245437";
-        window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
-        carrinho.length = 0; // Limpa o carrinho
-        updateModal(); // Atualiza o modal, se necessário
-        input_troco.value = ""
-        valorTroco.innerHTML = ""
-    },1000)
+        if (!pagamentoMetodo) {
+            Toastify({ text: "SELECIONE A FORMA DE PAGAMENTO", duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "red" }}).showToast();
+            valid = false;
+            return;
+        }
 
-}}}
+        if (valid) {
+            Toastify({ text: "PEDIDO CONFIRMADO", duration: 3000, close: true, gravity: "top", position: "right", stopOnFocus: true, style: { background: "#4CAF50" }}).showToast();
+
+            setTimeout(() => {
+                const whatsapp = carrinho.map((item) => {
+                    return `PEDIDOS: ${item.dataName}\nQUANTIDADE: ${item.quantidade}\nPreço: R$ ${item.dataPrice}\n-------------------------------------------------\n`;
+                }).join("");
+
+                const msg = encodeURIComponent(`${whatsapp}\nNome: ${endereco_nomeRetirada.value}\nNúmero Whatsapp: ${endereco_whatsapp.value}\nValor Total: ${totalValor.textContent}\nForma de Pagamento: ${pagamentoMetodo}\nTroco Para R$:${input_troco.value}\nHora Prevista Para Retirada: ${horaRetirada()}`);
+                const phone = "+5511973245437";
+                window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
+
+                carrinho.length = 0; // Limpa o carrinho
+                updateModal(); // Atualiza o modal, se necessário
+                input_troco.value = "";
+                valorTroco.innerHTML = "";
+            }, 1000);
+        }
+    }
 });
+
 
 
 
@@ -740,6 +727,8 @@ pesquisaInput.addEventListener('input', () => {
         msg.style.display = 'none';
     }
 });
+
+
 
 
 
