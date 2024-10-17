@@ -302,7 +302,7 @@ bntFinalizar.addEventListener('click', () => {
                     return `PEDIDOS: ${item.dataName}\nQUANTIDADE: ${item.quantidade}\nPreço: R$ ${item.dataPrice}\n-------------------------------------------------\n`;
                 }).join("");
 
-                const msg = encodeURIComponent(`${whatsapp}\nNome: ${endereco_nome.value}\nEndereço: ${endereco.value}\nNúmero: ${enderecoNumero.value}\nBairro: ${bairro.value}\nPonto de referencia: ${referencia.value}\nForma de Pagamento: ${pagamentoMetodo}\nTroco Para R$? ${input_troco.value + 'R$'}\n${valorTotalTaxa.textContent}\nHora Prevista da Entrega: ${horaPrevista()}`);
+                const msg = encodeURIComponent(`${whatsapp}\nNome: ${endereco_nome.value}\nEndereço: ${endereco.value}\nNúmero: ${enderecoNumero.value}\nBairro: ${bairro.value}\nPonto de referencia: ${referencia.value}\nForma de Pagamento: ${pagamentoMetodo}\nTroco Para R$? ${input_troco.value}\n-------------------------------------------------\n${taxasDisplay.textContent}\n${valorTotalTaxa.textContent}\nHora Prevista da Entrega: ${horaPrevista()}\n-------------------------------------------------`);
                 const phone = "+5511973245437";
                 window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
 
