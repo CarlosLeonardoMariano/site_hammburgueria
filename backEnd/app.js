@@ -28,6 +28,10 @@ app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 app.set('views', './views');
 
+ // MANIPULAÇÃO VIA ROTA DE DADOS 
+app.use(express.json());
+app.use(express.urlencoded({
+  extended:false }));
 
   // CONFIGURAR CONEXÃO MYSQL COM O SERVIDOR
   const conexão = mysql.createConnection({
@@ -49,9 +53,9 @@ res.render('formulario');
  
 });
 
+// ROTA DE CADASTRO
 app.post('/cadastrar', function(req,res){
   console.log(req.body);
-  console.log('erro')
   res.end()
 })
 app.listen(8080);
