@@ -1,0 +1,66 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="font-family:Arial, Helvetica, sans-serif">
+
+<div class="container" style="display: flex; justify-content: center; position: relative; width: 100%; height: 100vh;">
+    <div class="row" style="display: flex; justify-content: center; width: 100%; height: 100%;">
+        <div class="col-6">
+            <h2 style="text-align: center; font-size: 32px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 2
+            rem; margin-top: 3rem; color: #32324f;">LOGIN</h2>
+
+
+            <form>
+
+
+                <div class="input_entrar">
+                    <span style="font-size: 18px; color: #32324f; font-weight: 500; margin-bottom: 3px; display:inline-block; padding:5px">Username</span>
+                    <input type="email" name="email" id="email" placeholder="Email" style="width: 100%; padding: 10px; outline: none ; font-weight: 400; font-size: 18px; background-color: #e0eaf1; border:none; border-radius: 25px;">
+                </div>
+
+
+                <div class="input_entrar">
+                    <span style="font-size: 18px; color: #32324f; font-weight: 500; margin-bottom: 3px; display:inline-block; padding:5px">Password</span>
+                    <input type="password" name="senha" id="senha" placeholder="Senha"  style="width: 100%; padding: 10px; outline: none ; font-weight: 400; font-size: 18px;background-color: #e0eaf1; border:none; border-radius: 25px;">
+                </div>
+
+
+                  <div class="remember" style="display: flex;cursor: pointer; justify-content: space-between; margin-bottom: 25px; font-weight: 500; font-size: 14px; color: #32324f; margin-left: 10px; margin-top: 25px;">
+                    <label style=" font-weight: 500; font-size: 14px; color: #32324f; cursor: pointer;align-items: center; justify-content: center;">
+                        <input type="checkbox" name="" id="">Lembre de mim
+                    </label>
+                    <a href="" style="  text-decoration: none; color: #4aa4ee; margin-right: 10px;">Esqueçeu a Senha?</a>
+                  </div>
+
+                <div class="input-entrar">
+                    <input type="submit" value="cadastrar" id="enviar" style="color: #fff;border: none;outline: none;font-weight: 500; cursor: pointer;font-size: 20px; transition: 0.3s; background:#4aa4ee; width: 100%; padding: 12px; border-radius: 30px; font-size: 20px;">
+                </div>
+
+            <div class="input-entrar" style="display: flex;cursor: pointer; justify-content: space-between; margin-bottom: 25px; font-weight: 500; font-size: 16px; width: 100%; color: #32324f; margin-left: 10px; margin-top: 25px; ">
+                <p style="display: flex; margin-top: 10px; margin-left: 10px;">Não tem conta? <a href="" style="display: flex; margin-left: 19rem; text-decoration: none; color: #4aa4ee;" id="inscrever">Inscreva-se!</a> </p>
+            </div>
+            </form>
+
+           <h3 style="text-align: center; font-size: 32px; font-family: Arial, Helvetica, sans-serif;color: #32324f;">LOGAR COM</h3>
+            <ul class="ul">
+                <li>
+                    <img src="/css/imgLOGIN/google.png" alt="" id="img_google">
+                    <img src="/css/imgLOGIN/facebook.png" alt="" id="img_facebook">
+                    <img src="/css/imgLOGIN/apple.png" alt="" id="img_apple">
+
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>        
+
+<script src="/backEnd/app.js"></script>
+</body>
+</html>
